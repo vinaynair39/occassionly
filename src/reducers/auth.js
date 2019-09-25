@@ -1,11 +1,20 @@
-export default (state = {}, action) => {
+const initialState = {
+  isAuthenticated: false,
+  loading: false,
+  user: {},
+}
+
+export default (state = initialState, action) => {
   switch (action.type) {
     case 'LOGIN':
       return {
-        uid: action.uid
+          ...state,
+          isAuthenticated: true,
       };
     case 'LOGOUT':
-      return {};
+        return {
+            isAuthenticated:false
+        };
     default:
       return state;
   }

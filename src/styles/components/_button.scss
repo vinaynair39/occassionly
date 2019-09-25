@@ -1,19 +1,131 @@
-.button {
-  background: $blue;
+.button{
   border: none;
-  color: white;
   display: inline-block;
-  font-size: $font-size-large;
-  font-weight: 300;
-  line-height: 1;
-  padding: $s-size;
+  font-family: 'Livvic', sans-serif;
+  outline: none;
   text-decoration: none;
+  font-size: $font-size-large;
+  line-height: 1;
+  margin: 0;  
 }
 
+.button-primary{
+  color: white;
+  font-size: $font-size-large;
+  font-weight: 300;
+  padding: $s-size 2.6rem;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  background: $orange;
+}
+
+.button-secondary{
+  background: $grey;
+  color: white;
+  font-size: $font-size-large;
+  font-weight: 300;
+  padding: $s-size 2.6rem;
+  border-radius: 10px;
+}
+
+.button-logout{
+  background: $light-blue;
+  border: none;
+  font-family: 'Livvic', sans-serif;
+  color:white ;
+  display: inline-block;
+  font-size: $font-size-large;
+  font-weight: 800;
+  line-height: 1;
+  padding: $s-size 1.5rem;
+  text-decoration: none;
+  border-radius: 10px;
+  outline: none;
+}
+
+
+
+.button-secondary:hover {
+  padding: 1.5rem 2.6rem; 
+  transition: all 0.2s ease;
+}
+.button-primary:hover {
+  padding: $m-size $l-size;
+  transition: all 0.2s ease;
+}
+.button-primary:active {
+  box-shadow: 0 5px darken($orange, $amount: 2);
+  transform: translateY(4px);
+}
+.button-secondary:active {
+  box-shadow: 0 5px darken($grey, $amount: 2);
+  transform: translateY(4px);
+}
 .button--link {
   background: none;
 }
 
 .button--secondary {
   background: #888;
+}
+
+
+
+.btn-secondary {
+  display: block;
+  margin: 40px auto 0px;
+  text-align: center;
+  background: #ed2553;
+  border-radius: 3px;
+  box-shadow: 0 10px 20px -8px rgb(240, 75, 113);
+  padding: 10px 17px;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  text-decoration: none;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+.btn-secondary:hover {
+  transform: translateY(-3px);
+}
+.btn-secondary .fa {
+  margin-right: 5px;
+}
+
+.btn-primary {
+  display: block;
+  margin: 40px auto 0px;
+  text-align: center;
+  background: $voilet;
+  border-radius: 3px;
+  box-shadow: 0 10px 20px -8px rgb(240, 75, 113);
+  padding: 10px 17px;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  text-decoration: none;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+}
+.btn-primary .fa {
+  margin-right: 5px;
+}
+
+.animate-like {
+animation-name: likeAnimation;
+animation-iteration-count: 1;
+animation-fill-mode: forwards;
+animation-duration: 0.65s;
+}
+@keyframes likeAnimation {
+0%   { transform: scale(30); }
+100% { transform: scale(1); }
 }

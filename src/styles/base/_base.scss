@@ -4,13 +4,19 @@
 
 html {
   font-size: 62.5%;
+  outline: none;
+
 }
 
 body {
-  color: $dark-grey;
-  font-family: Helvetica, Arial, sans-serif;
+  // color: #efbb35;
+  color: $dark-red;
+  font-family: 'Livvic', sans-serif;
   font-size: $m-size;
   line-height: 1.6;
+  // background: #222831;
+
+
 }
 
 button {
@@ -20,7 +26,16 @@ button {
 button:disabled {
   cursor: default;
 }
-
 .is-active {
   font-weight: bold;
+}
+
+a
+{
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:visited {
+  color:none;
 }
