@@ -10,3 +10,40 @@
   margin: 0 0 $m-size 0;
   font-style: italic;
 }
+
+.form-image{
+  margin:2rem 0;
+  display: flex;
+  justify-content: center;
+  p{
+    margin-right: 2rem;
+  }
+}
+
+.form-title{
+  border: none;
+  border-bottom: 1px solid $blush;
+  outline: none;
+  height: 8rem;
+  font-size: $font-size-2x;
+  color: #181818;
+  font-weight: 700;
+  margin-bottom: 4rem;
+  &:focus{
+    border-bottom: 1px solid $blue;
+  }
+}
+.form-content{
+  outline: none;
+  margin: 2rem;
+  height: 60vh;
+  font-size: $font-size-large;
+  color: darken($color_grey_dark,20%);
+  font-weight: 400;
+}
+
+
+.form-image-exist{
+  display:flex;
+  justify-content: center;
+}

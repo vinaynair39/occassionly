@@ -30,6 +30,7 @@ export const startLogin =  (credentials) => {
           dispatch(login());
           dispatch({type: 'UNLOADING_UI'});
           }).catch(err => {
+              console.log(err.response)
               dispatch({
                   type: 'SET_ERRORS',
                   error: err.response ? (err.response.data.general || err.response.data.err ) : ''

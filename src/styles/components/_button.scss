@@ -13,10 +13,12 @@
   color: white;
   font-size: $font-size-large;
   font-weight: 300;
-  padding: $s-size 2.6rem;
-  border-radius: 10px;
+  padding: $s-size 2rem;
+  border-radius: 8px;
   margin-bottom: 0.5rem;
   background: $orange;
+  // box-shadow: 0 5px 40px -10px $orange;
+
 }
 
 .button-secondary{
@@ -29,13 +31,11 @@
 }
 
 .button-logout{
-  background: $light-blue;
+  background: transparent;
   border: none;
   font-family: 'Livvic', sans-serif;
-  color:white ;
+  color:$blush ;
   display: inline-block;
-  font-size: $font-size-large;
-  font-weight: 800;
   line-height: 1;
   padding: $s-size 1.5rem;
   text-decoration: none;
@@ -50,8 +50,8 @@
   transition: all 0.2s ease;
 }
 .button-primary:hover {
-  padding: $m-size $l-size;
   transition: all 0.2s ease;
+  background: $blush;
 }
 .button-primary:active {
   box-shadow: 0 5px darken($orange, $amount: 2);
@@ -81,7 +81,7 @@
   padding: 10px 17px;
   font-size: 18px;
   cursor: pointer;
-  border: none;
+  border: 1px inherit;
   outline: none;
   color: #ffffff;
   text-decoration: none;
@@ -129,3 +129,63 @@ animation-duration: 0.65s;
 0%   { transform: scale(30); }
 100% { transform: scale(1); }
 }
+
+
+
+.button-dropbtn {
+  background: transparent;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  color: $blush;
+  outline: none;
+
+}
+
+/* The container <div> - needed to position the dropdown content */
+.button-dropdown {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+
+}
+
+/* Dropdown Content (Hidden by Default) */
+.button-dropdown__content { 
+  display: none;
+  position: absolute;
+  left: -5rem;
+  background-color: #f9f9f9;
+  width: 15rem;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.button-dropdown__content button {
+  color: black;
+  width: 100%;
+  padding: 10px 10px;
+  text-decoration: none;
+  display: block;
+  border-bottom: 1px solid darken(#f1f1f1, 10%);
+}
+
+/* Change color of dropdown links on hover */
+.button-dropdown__content button:hover {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+
+/* Show the dropdown menu on hover */
+.button-dropdown:hover .button-dropdown__content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+// .button-dropdown:hover .button-dropbtn {
+//   background-color: $blush;
+// }

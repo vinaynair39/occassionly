@@ -5,24 +5,30 @@
   background-size: cover;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  align-items: center;
-  box-shadow: #333333;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-areas: 
+  "logo logo login";
+  opacity: 0.95;
+  a{
+    color: $orange;
+    text-decoration: underline;
+  }
 }
 
 .box-layout__box {
+  grid-area: login;
   display: flex;
+  padding: 1rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background:fade-out(#2E3740,0);
-  border-radius: 3rem;
+  background:darken(#2E3740,5%);
+  // border-radius: 3rem;
   padding: $l-size $m-size;
   text-align: center;
-  width: 50rem;
-  height: 58rem;
+  width: 38vw;
+  // height: 58rem;
+  height: 100vh;
   transition: all 0.2s ease-in;
   @media screen and (max-width: $desktop-breakpoint){
     width: 100vw;
@@ -33,26 +39,58 @@
 
 .box-layout__signup-box {
   background:fade-out(#2E3740,0);
-  border-radius: 30px;
   padding: $l-size $m-size;
   text-align: center;
   width: 40vw;
-  height: 90vh;
+  height: 100vh;
 }
 
 
-.box-layout__logo{
+.box-layout__logo-outside{
+  @media screen and (max-width: $desktop-breakpoint){
+    display: none;
+  }
+  grid-area: logo;
+  // background: lighten($color: #2E3740, $amount: 0.3)
+  background: url('/images/bg1.jpg') center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.9;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-.box-layout__logo img{
   margin: 0;
-  height: 10rem;
+  width: 62vw;  
 }
 
+
+.box-layout__logo-outside img{
+  display:flex;
+  justify-content: center;
+  height: 15rem;
+}
+
+.box-layout__logo-inside{
+  // @media screen and (min-width: $desktop-breakpoint){
+  //   display: none;
+  // }
+  grid-area: logo;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+.box-layout__logo-inside img{
+  display:flex;
+  justify-content: center;
+  height: 12rem;
+}
+
+
 .box-layout__title {
-  margin: 0 0 $m-size 0;
+  margin: 0 0 $s-size 0;
   line-height: 1;
   color:$orange;
   font-size: $xl-size;
@@ -60,9 +98,19 @@
     font-size: $l-size;
   }
 }
+
+.Tilt{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+
 .box-layout__subtitle {
   color:white;
   font-size: 2rem;
+  font-weight: 500;
   margin-bottom: 1rem;
   @media (max-width:$desktop-breakpoint){
     position: absolute;
@@ -83,25 +131,29 @@
 
 h5{
   margin:1rem;
+  color: $skin;
+  font-weight: 200;
+  font-size: 1.5rem;
 }
 
-.margin-right{
-  margin-right: 3rem;
+.margin-bottom{
+  margin-bottom: 3rem;
 }
 .box-layout input{
   border: 0;
-  font-family: cursive;
+  // font-family: cursive;
   background: none;
   display: block;
   margin: 3rem auto;
   text-align: center;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid $blush;
   border-top: 2px solid $blush;
-  border-radius: 15px;
+  border-radius: 10px;
   width: 23vw;
   padding: $s-size $xl-size;
   outline: none;
-  color: white;
+  color: $skin;
+  font-weight: 200;
   &:focus{
     &::placeholder{
       color: transparent;
@@ -123,13 +175,16 @@ h5{
 
 .box-layout__signin {
   display: flex;
-  margin: 0 4rem;
+  margin: 0 7rem;
+  @media screen and (max-width: $desktop-breakpoint){
+    margin: 0 25vw;
+  }
   justify-content: space-around;
   & button{
     background: transparent;
     border: none;
-    color: $blue;
-    margin-right: 1rem;
+    color: $orange;
+    margin-bottom: 1rem;
   }
   
 }
@@ -161,7 +216,7 @@ h5{
 }
 
 .box-layout__login-form-title{
-  font-family: Poppins-Bold;
+  // font-family: Poppins-Bold;
   font-size: 24px;
   color: #333333;
   line-height: 1.2;

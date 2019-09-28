@@ -1,5 +1,8 @@
 * {
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 html {
@@ -9,9 +12,9 @@ html {
 }
 
 body {
-  // color: #efbb35;
+  background: #2E3740;
   color: $dark-red;
-  font-family: 'Livvic', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: $m-size;
   line-height: 1.6;
   // background: #222831;

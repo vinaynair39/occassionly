@@ -30,15 +30,17 @@ export const LoginPage = ({ startLogin, error,unsetError, loading}) => {
     }
     return(
         <div className="box-layout">
+            <div className="box-layout__logo-outside animated fadeInDown delay-1s">
+            </div>
             {loading && <div class="spinner"></div>}
-            <div className="box-layout__box  animated fadeInDown delay-1s">
-                <div className="box-layout__logo">
+            <div className="box-layout__box  animated fadeInRight delay-1s">
+            <div className="box-layout__logo-inside">
                     <Tilt className="Tilt" options={{ max : 25 }} >
                         <img src="/images/logo.png" alt=""/>
                         <h1 className="box-layout__title animated flash delay-2s">Occasionly</h1>
+                        <h2 className="box-layout__subtitle">Explore different activities held in RAIT</h2>
                     </Tilt>
-                </div>
-                <h2 className="box-layout__subtitle">Explore different activities held in RAIT</h2>
+            </div>
                 <div className="box-layout__form">
                     <form onSubmit={onStartLogin}>
                         <input  type="email" value={email}
@@ -64,7 +66,7 @@ export const LoginPage = ({ startLogin, error,unsetError, loading}) => {
                         </div>
                     </form>
                     {error && showErrors()}
-                    <label className="box-layout__question animated infinite pulse">no account?</label> <Link to='/signup'>Sign Up</Link>
+                    <label className="box-layout__question animated infinite pulse">no account? </label><Link to='/signup'>Sign Up</Link>
                 </div>
             </div>
         </div>

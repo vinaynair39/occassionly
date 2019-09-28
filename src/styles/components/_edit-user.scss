@@ -1,0 +1,45 @@
+.edit-user{
+    display: grid;
+    grid-template-areas: 
+    "image contents contents";
+    margin: 5rem 5rem;
+}
+
+.edit-user__image{
+    grid-area: image;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img{
+        margin: 2rem;
+        width: 25rem;
+        height: 25rem;
+        border-radius: 1rem;
+    }
+
+    button{
+        margin-top:1rem;    
+        border-radius: 5rem;;
+        width: 15rem;
+    }
+}
+
+
+.edit-user__contents{
+    text-align: center;
+    grid-area: contents;
+    display: flex;
+}
+
+.edit-user__contents-data{
+    margin-top:5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &>div{
+        margin-bottom: 1rem;
+    }
+}

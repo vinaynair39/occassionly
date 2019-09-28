@@ -1,11 +1,11 @@
 import React from 'react';
 import EventList from './EventList';
-// import EventFilter from './EventFilter';
+import EventFilters from './EventFilters';
 // import FamousCard from './FamousCard';
 const DashboardPage = () => (
 
     <div>
-        {/* <BlogFilter/> */}
+        <EventFilters/>
         <div className="card">
         <div className="blog-card">
             <EventList/>

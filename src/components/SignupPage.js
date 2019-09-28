@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import {startSignUp } from '../actions/auth';
 import isEmail from 'validator/lib/isEmail';
 import Tilt from 'react-tilt';
+import Link from 'react-router-dom/Link';
+
 // import { Input } from 'semantic-ui-react'
 export const LoginPage = ({ startSignUp, error, setUIErrors, loading, unsetError}) => {
 
@@ -57,8 +59,10 @@ const showErrors = () => {
 }
     return(
           <div className="box-layout">
+          <div className="box-layout__logo-outside animated fadeInDown delay-1s">
+            </div>
             {loading && <div class="spinner"></div>}
-            <div className="box-layout__signup-box animated fadeInDown delay-1s">
+            <div className="box-layout__signup-box animated fadeInRight delay-1s">
                 <Tilt className="Tilt" options={{ max : 25 }} >
                     <h1 className="box-layout__title animated flash delay-2s">Ocassionly</h1>
                 </Tilt>
@@ -82,8 +86,10 @@ const showErrors = () => {
                         placeholder="confirm Password"
                         onChange={e => (getConfirmPassword(e.target.value))}/>
                         
-                        <button className="button button-primary">Sign Up</button>
+                        <button className="button button-primary ">Sign Up</button>
                     </form>
+                    {error && showErrors()}
+                    <label className="box-layout__question  animated infinite pulse">Already have an account?</label> <Link to='/'>Login</Link>
                 </div>
             </div>
         </div>

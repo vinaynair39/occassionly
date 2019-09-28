@@ -2,7 +2,7 @@ import moment from 'moment';
 
 const defaultFiltersState = {
     text: "",
-    sortBy: "date", //date or amount
+    sortBy: "likes", //date or amount
     startDate: moment().startOf('month'),
     endDate: moment().endOf('month')
   };
@@ -24,10 +24,10 @@ const defaultFiltersState = {
           ...state,
           endDate: action.endDate
         };
-      case "SORT_BY_AMOUNT":
-        return {
-          ...state,
-          sortBy: 'amount'
+      case "SORT_BY_LIKES":
+          return {
+            ...state,
+            sortBy: 'likes'
         };
       case "SORT_BY_DATE":
         return {

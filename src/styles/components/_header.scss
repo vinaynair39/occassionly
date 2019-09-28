@@ -1,18 +1,255 @@
 .header {
-  background: $dark-blue;
+  background: lighten(#2E3740, 5%);
+  position: sticky;
+  top:0;
+  width: 100%;
+  z-index: 100;
+  border-bottom: 1px solid #2E3740;
 }
 
 .header__content {
-  align-items: center;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: $s-size 0;
+  padding: $xs-size 0;
+  margin: 0 3rem 0 0;
 }
 
+.mobile{
+  @media screen and (max-width: $desktop-breakpoint) {
+    display: none;
+  }
+}
+
+.desktop{
+  @media screen and (min-width: $desktop-breakpoint) {
+    display: none;
+  }
+}
 .header__title {
-  color: white;
+  display: flex;
+  color:  $orange;
   text-decoration: none;
   h1 {
     margin: 0;
   }
+  img{
+    height: 5rem;
+    margin: 0 0 0 3rem;
+  }
+
+  @media(max-width: $desktop-breakpoint){
+    img{
+      height: 5rem;
+      margin: 0 0 0 0.5rem;
+    }
+  }
 }
+
+
+.header__links{
+  margin:0;
+  input{
+    opacity: 0;
+    margin: 0;
+  }
+  ul{
+    margin:0;
+    button{
+      background: transparent;
+      border: none;
+    }
+  }
+  a{
+    margin: 0 1rem 1rem 0;
+    font-size: $font-size-large;
+    color: $blush;
+    font-weight: 550;
+  }
+  a:hover{
+    color: $blush;
+    font-weight: bolder;
+    transition: font-weight 0.3s ease;
+  }
+
+  button{
+    margin-right: 3rem;
+  }
+
+  nav{
+    margin: 0;
+  }
+
+}
+
+.header__notification-button{
+  background: transparent;
+  border: none;
+  color: $blush;
+  position: relative;
+}
+
+.header__notification-button[data-badge]:after {
+  content:attr(data-badge);
+  position:absolute;
+  top:-10px;
+  right:-10px;
+  font-size:.7em;
+  background:$blue;
+  color: $dark-grey;
+  width:18px;height:18px;
+  text-align:center;
+  line-height:18px;
+  border-radius:50%;
+  box-shadow:0 0 1px #333;
+}
+
+#toggler{
+  
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+  opacity: 0;
+  height: 5rem;
+  width: 5rem;
+  cursor: pointer;
+}
+
+#toggler:checked ~ #menu {
+  visibility: visible;
+}
+
+#toggler:checked ~ #menu > div{
+  transform: scale(1);
+  transition-duration: 0.75s;
+}
+
+#toggler:checked ~ #menu > div > div{
+  opacity: 1;
+  transition: opacity 0.4s ease 0.4s;
+}
+@media (max-width: $desktop-breakpoint){
+
+  
+  #hamburger{
+    position: absolute;
+    top: 1rem;
+    right: 0;
+    z-index:2;
+    width: 5rem;
+    height: 5rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 1rem;
+  
+    & > div{
+      position: relative;
+      width:100%;
+      height: 3px;
+      border-radius: 3px;
+      background-color: $orange;  
+      display: flex;
+      justify-items: center;
+      align-items: center;
+      transition: all 0.4s ease;
+    }
+  
+    //top line
+    & > div:before, & >div:after{
+      content: '';
+      position: absolute;
+      z-index: 2;
+      top:-10px;
+      width: 100%;
+      height: 3px;
+      border-radius: 3px;
+      background-color: inherit;
+    }
+  //bottom line
+    & >div:after{
+      top: 10px
+    }
+  }
+  
+  //toggler animate
+  #toggler:checked + #hamburger > div{
+    transform: rotate(135deg);
+    &:before, &:after{
+      top:0;
+      transform: rotate(90deg);
+    }
+  }
+  
+  #toggler:checked:hover + #hamburger > d {
+    transform: rotate(225deg);
+  }
+  
+  
+  //show menu 
+
+
+  #menu{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+
+  & > div{
+    background:$white;
+    border-radius: 50%;
+    width: 200vw;
+    height: 200vw;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    transition: all 0.4s ease;
+    position: relative;
+  }
+
+  & > div > div{
+    text-align: center;
+    max-width: 90vw;
+    max-height: 100vh;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    }
+
+  & > div > div > ul {
+    color:white;
+    font-size: $font-size-small;
+    display: flex;
+    flex-direction: column;    
+    margin: 0;
+  }
+  
+  & > div > div > ul > a {
+    color: inherit;
+    outline: none;
+    margin: 1rem 0;
+    text-decoration: none;
+    transition: color 0.4s ease;
+  }
+
+  & > div > div > ul > a:hover {
+    font-weight: 800;
+    color:$skin;
+    margin: 1rem 0;
+  }
+
+  & > div > div > ul > button {
+    margin: 1rem 0;
+  }
+}}
+
