@@ -5,19 +5,19 @@ import { faHeart, faComment, faShare ,faArrowDown} from "@fortawesome/free-solid
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {history} from '../routers/AppRouter';
 
-export const EventListItem = ({ eventName, description, time, date, location, fee, id}) => (
+export const EventListItem = ({ eventName, description, time, date, location, fee, id ,venues}) => (
     <div className={"list-card" + ((history.location.pathname === '/myblogs' || history.location.pathname.includes('/user')) ? " my-blogs__list-card":"")}>
         <div className="list-card__body">
-            {/* <div className="list-card__image">
-                <img src={imageUrl} alt="" />
-            </div> */}
+            <div className="list-card__image">
+                <img src='/images/img5.jpeg' alt=""/>
+            </div>
             <div className="list-card__content">
             <Link className="list-card__body-title" to={`/blog/${id}`}>
                     {eventName}
-                {/* <div className="list-card__body-author">
-                    <img src={userImageUrl} alt=""/>
-                    <h3>{userHandle}</h3>
-                </div>   */}
+                <div className="list-card__body-author">
+                    
+                    {/* <h3>{userHandle}</h3> */}
+                </div>  
                 <div>
                     <p className="list-card__content-text">description</p>
                 </div>
@@ -26,13 +26,12 @@ export const EventListItem = ({ eventName, description, time, date, location, fe
             
             <div className="list-card__body-date">
                 <div>
-                    <h5>{time}</h5>
-                    <h6>{date}</h6>
+                    <h6>{moment(date).format("MMM Do YY")}</h6>
                 </div>
                 <ul>
-                    <li><FontAwesomeIcon icon={faHeart}  size="2x"/></li>
-                    <li><FontAwesomeIcon icon={faComment}  size="2x"/></li>
-                    <li><FontAwesomeIcon icon={faShare} size="2x"/></li>
+                    {/* <li><FontAwesomeIcon icon={faHeart}  size="lg"/></li>
+                    <li><FontAwesomeIcon icon={faComment}  size="lg"/></li>
+                    <li><FontAwesomeIcon icon={faShare} size="lg"/></li> */}
                 </ul>
             </div>
             </div>

@@ -173,11 +173,12 @@ h5{
   margin: 2rem auto; 
 }
 
-.box-layout__signin {
+.box-layout__signin{
   display: flex;
   margin: 0 7rem;
   @media screen and (max-width: $desktop-breakpoint){
-    margin: 0 25vw;
+    margin: 3rem 10vw 2rem 10vw;
+
   }
   justify-content: space-around;
   & button{
@@ -186,7 +187,10 @@ h5{
     color: $orange;
     margin-bottom: 1rem;
   }
-  
+}
+
+.box-layout__signin button:hover{
+  color: $blush;
 }
 
 .box-layout input:hover {

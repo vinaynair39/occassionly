@@ -6,7 +6,6 @@
   @media screen and (max-width: 1050px){
    justify-content: center
   }
-
   @media screen and (max-width: $desktop-breakpoint){
     display: flex;
     flex-direction: column;
@@ -18,9 +17,11 @@
 
 .list-card{ 
   position: relative;
-  height: 42rem;
-  width: 55vw;
+  height: 40rem;
+  width: 60rem;
   margin: 4rem; 
+  background: white;
+  border-radius: 20px;
   box-shadow: 0 10px 20px rgba($black, 0.3), 0 6px 17px rgba($black, 0.2);
   @media screen and (max-width: $desktop-breakpoint){
     text-align: center;
@@ -32,11 +33,11 @@
   }
 
   &:hover{
-    // -webkit-transform: scale(0.9);  
-    // -ms-transform: scale(0.9);  
-    // transform: scale(0.92);  
-    // -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-    // box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    -webkit-transform: scale(0.9);  
+    -ms-transform: scale(0.9);  
+    transform: scale(0.92);  
+    -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
     transform: scale(1.03); 
     cursor: pointer;
@@ -47,7 +48,7 @@
 
 .list-card__body{
   display: grid;
-  grid-template-columns:  1.5fr 1fr;
+  grid-template-columns:  1.3fr 1fr;
   grid-template-rows: 2fr 1fr;
   grid-template-areas: 
   "img content"
@@ -66,7 +67,7 @@
   grid-area: img;
   width: 90%;
   top: -3rem;
-  left: 3rem;
+  left: 2rem;
   height: 40vh;
   margin: 0;
   position: relative;
@@ -90,7 +91,7 @@
   @media screen and (max-width: 1050px){
     // min-width: ;
    }
-  margin: 0.6rem 1rem;
+  margin: 0.6rem 1rem 0.6rem 0;
   h3{
     margin:0 1rem 1rem 0;
   }
@@ -161,7 +162,7 @@
   margin-left: 4rem;
   margin-bottom: 2rem;
   h5{
-    font-size : 5rem;
+    font-size : 3rem;
     color : #C3C3C3;
     margin: 0;
   }
@@ -215,12 +216,12 @@
 	right : 50px;
   bottom : -40px;
   @media screen and(max-width:$desktop-breakpoint){
-    right : 70px;
+    right : 33vw;
     bottom : -50px;
   }
 	box-sizing: border-box;
 	padding-top: 18px;
-	background-color : $grey;
+	background-color : $orange;
 	width : 80px;
 	height : 80px;
 	color : white;

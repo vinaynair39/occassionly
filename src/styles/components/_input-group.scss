@@ -52,7 +52,7 @@ $d: 2em;
 .inner {
   background: #fff;
   border-radius: 5em;
-  box-shadow: 0 10px 20px -8px rgb(240, 75, 113);
+  box-shadow: 0 10px 20px -8px black;
   display: flex;
   overflow: hidden;
   width: 16rem;
@@ -100,7 +100,7 @@ input[type="radio"] {
   &:checked ~ label {
     &[title="Sort by Likes"] {
       &::after {
-        background: darken($peach, 20);
+        background: $yellow;
         clip-path: circle(100%);
       }
     }
@@ -109,7 +109,7 @@ input[type="radio"] {
   &:checked ~ label {
     &[title="Recent"] {
       &::after {
-        background: darken($f, 25);
+        background: $yellow;
         clip-path: circle(100%);
       }
     }

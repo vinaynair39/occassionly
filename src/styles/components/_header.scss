@@ -46,7 +46,9 @@
   }
 }
 
-
+.header__chat-button{
+  color:$blush;
+}
 .header__links{
   margin:0;
   input{
@@ -58,6 +60,7 @@
     button{
       background: transparent;
       border: none;
+      outline: none;
     }
   }
   a{
@@ -115,6 +118,28 @@
   width: 5rem;
   cursor: pointer;
 }
+
+#menu{
+  @media (min-width: $desktop-breakpoint){
+    display: none;
+  }
+
+  & button{
+    font-size: $font-size-2x;
+    padding: 0 0 8rem 0;
+  }
+
+  & ul{
+    padding: 0;
+  }
+}
+
+#desktop-menu{
+  @media (max-width: $desktop-breakpoint){
+    display: none;
+  }
+}
+
 
 #toggler:checked ~ #menu {
   visibility: visible;
@@ -207,8 +232,8 @@
   & > div{
     background:$white;
     border-radius: 50%;
-    width: 200vw;
-    height: 200vw;
+    width: 150vw;
+    height: 135vh;
     display: flex;
     flex: none;
     align-items: center;

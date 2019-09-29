@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {startSetEvents} from './events';
 
 export const login = () => ({
   type: 'LOGIN',
@@ -12,6 +13,7 @@ export const startSignUp = (credentials) => {
         setAuthorizationHeader(res.data.token);
           dispatch(login());
           dispatch({type: 'UNLOADING_UI'});
+          dispatch(startSetEvents());
           }).catch(err => {
               console.log(err.response)
               dispatch({
@@ -29,6 +31,7 @@ export const startLogin =  (credentials) => {
           setAuthorizationHeader(res.data.token);
           dispatch(login());
           dispatch({type: 'UNLOADING_UI'});
+          dispatch(startSetEvents());
           }).catch(err => {
               console.log(err.response)
               dispatch({
