@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: $m-size $m-size;
+  margin: $l-size $m-size;
   margin-bottom: 0;
   @media (min-width: $desktop-breakpoint) {
     flex-direction: row;

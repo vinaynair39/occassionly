@@ -14,3 +14,18 @@ export const startSetEvents = () => {
         })
     }
 };
+
+export const addEvent = (event) => ({
+    type: 'ADD_EVENT',
+    event,
+});
+
+export const startAddEvent = (eventData = {}) => {
+    return (dispatch) => {
+        axios.post('../../event/create', eventData).then((res) => {
+            dispatch(addEvent(res.data));
+        }).catch(err => {
+            console.log(err.response)
+        })
+    }
+}

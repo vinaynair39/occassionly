@@ -47,48 +47,45 @@
 }
 
 .header__chat-button{
-  color:$blush;
+  color:$f;
+  cursor: pointer;
+  &:focus{
+    color: $pink;
+    pointer-events: none;
+  }
 }
 .header__links{
   margin:0;
-  input{
+  & input{
     opacity: 0;
     margin: 0;
   }
-  ul{
+  & ul{
     margin:0;
-    button{
+    & button{
       background: transparent;
       border: none;
       outline: none;
+      // color:$blush;
+      margin-right: 3rem;
     }
   }
-  a{
-    margin: 0 1rem 1rem 0;
-    font-size: $font-size-large;
-    color: $blush;
-    font-weight: 550;
-  }
-  a:hover{
-    color: $blush;
-    font-weight: bolder;
-    transition: font-weight 0.3s ease;
-  }
 
-  button{
-    margin-right: 3rem;
-  }
+}
 
-  nav{
-    margin: 0;
-  }
+#menuToggle > button , a > button{
+  color: $blush;
+}
 
+.scale:hover{
+  transform: scale(1.2);
+  transition: transform 0.2s ease;
 }
 
 .header__notification-button{
   background: transparent;
   border: none;
-  color: $blush;
+  // color: $blush;
   position: relative;
 }
 
@@ -277,4 +274,3 @@
     margin: 1rem 0;
   }
 }}
-

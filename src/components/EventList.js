@@ -8,6 +8,7 @@ export const EventList = (props) => (
         {props.events.length === 0 ? (<p>No blogs</p>) : (props.events.map((event) => {
             return <EventListItem key={event.id}  {...event} />
         }))}
+        
     </div>
 )
 const mapStateToProps = (state) => ({

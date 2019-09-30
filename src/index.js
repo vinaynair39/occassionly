@@ -11,7 +11,9 @@ import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 import 'normalize.css/normalize.css';
 import 'animate.css';
+import 'react-dates/lib/css/_datepicker.css';
 import './styles/styles.scss';
+
 // import 'semantic-ui-css/semantic.min.css';
 
 

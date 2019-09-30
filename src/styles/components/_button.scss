@@ -31,10 +31,9 @@
 }
 
 .button-logout{
-  background: transparent;
   border: none;
   font-family: 'Livvic', sans-serif;
-  color:$blush ;
+  color:black ;
   display: inline-block;
   line-height: 1;
   padding: $s-size 1.5rem;
@@ -166,12 +165,12 @@ animation-duration: 0.65s;
 
 /* Links inside the dropdown */
 .button-dropdown__content button {
-  color: black;
   width: 100%;
   padding: 10px 10px;
   text-decoration: none;
   display: block;
   border-bottom: 1px solid darken(#f1f1f1, 10%);
+
 }
 
 /* Change color of dropdown links on hover */
@@ -217,4 +216,28 @@ animation-duration: 0.65s;
 	background-color: #23252B;
 	color: #fff;
 	border-left: 3px solid #44bfc6;
+}
+
+
+.button-floating button{
+    color: white;
+    position: sticky;
+    height: 6rem;
+    width: 6rem;
+    background: $orange;
+    border-radius: 50%;
+    border:none;
+    outline: none;
+    bottom: 1rem;
+    left: 47.8%;
+    z-index: 100;
+    &:hover{
+      transform: scale(1.25);
+      transition: transform 0.1s ease;
+    }
+
+    @media screen and (max-width: $desktop-breakpoint){
+      top:80vh;
+      left: 42vw;
+    }
 }

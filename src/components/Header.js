@@ -37,9 +37,10 @@ const Header = (props) =>{
                         <div id="desktop-menu">
                             <div>
                                 <div>
-                                    <ul>
-                                        <button title="Chatroom for the events you joined" className="header__chat-button"><FontAwesomeIcon icon={faCommentAlt}/></button>
-                                        <button title="Notificiations"className="header__notification-button" data-badge={2} onClick={onClick}><FontAwesomeIcon icon={faBell} size="lg"/></button>
+                                    <ul id="menuToggle">
+                                        <Link to="/add"><button className="scale"><FontAwesomeIcon icon={faPlus}/></button></Link> 
+                                        <button title="Chatroom for the events you joined" className="header__chat-button scale" ><FontAwesomeIcon icon={faCommentAlt}/></button>
+                                        <button title="Notificiations"className="header__notification-button scale" data-badge={2} onClick={onClick}><FontAwesomeIcon icon={faBell} size="lg"/></button>
                                         <div className="button-dropdown">
                                             <button className="button-dropbtn"><FontAwesomeIcon icon={faUserCircle} size="lg"/></button>
                                             <div className="button-dropdown__content">
@@ -63,7 +64,8 @@ const Header = (props) =>{
                                 </div>
                             </div>
                         </div>
- 
+
+                           
                 </div>
                 {toggle && <ul>{getNotifications()}</ul>}
             </div>
