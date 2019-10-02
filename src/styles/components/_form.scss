@@ -1,49 +1,250 @@
-.form {
-  display: flex;
-  flex-direction: column;
-  >* {
-    margin-bottom: $m-size;
+  .form {
+    display: grid;
+    grid-template-areas: 
+    "image content content";
+    grid-template-columns: minmax(30rem,1fr) 2fr;
+    flex-direction: column;
+    >* {
+      margin-bottom: $m-size;
+    }
+
+    @media screen and (max-width: $desktop-breakpoint){
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
-}
 
-.form__error {
-  margin: 0 0 $m-size 0;
-  font-style: italic;
-}
+  .form__error {
+    margin: 0 0 $m-size 0;
+    font-style: italic;
+  }
 
-.form-image{
-  margin:2rem 0;
-  display: flex;
-  justify-content: center;
-  p{
+  .form-image{
+    grid-area: image;
+    display: flex;
+    flex-direction: column;
+    margin:5rem 0 0 0;
+    margin-left: 2rem;
+    display: flex;
+    justify-content: flex-start;
+    & img{
+      height:50vh;
+    }
+
+    @media (max-width: $desktop-breakpoint){
+      margin-left: 0;
+      & img{
+        width:100%;
+      }
+    }
+
+    p{
+      margin-right: 2rem;
+    }
+  }
+
+  .form-content__main{
+    grid-area: content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    margin: 3rem 3rem 0 3rem;
+    font-size: $font-size-large;
+    color: darken($color_grey_dark,20%);
+    font-weight: 400;
+    @media screen and (max-width: $desktop-breakpoint){
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .form-content__others{
+    display: grid;
+    grid-template-areas: "others date";
+    grid-template-columns: 35rem 35rem;
+    // margin: 0 3rem 3rem 3rem;
+    @media screen and (max-width: $desktop-breakpoint) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;  
+    }
+  }
+  .form-content__others-others{
+    position: relative;
+    left: -3rem;
+  }
+  .form-content__checkbox{
+    grid-area: date;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & input[type="checkbox"]{
+      margin-bottom: 1rem;
+      width: 3rem;
+    }
+    & > div{
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .form-content__checkbox-calendar{
+    display: flex;
+    justify-content: flex-start;
+  }
+  .form-title{
+    border: none;
+    border-radius: 0.5rem;
+    text-align: center;
+    outline: none;
+    height: 5rem;
+    width: 70rem;
+    font-size: $font-size-xl;
+    color: white;
+    font-weight: 700;
+    background: lighten($dark-grey,7);
+
+    margin-bottom: 3rem;
+    &:focus{
+      border: 1px solid $blush;
+      box-shadow: 0 0 10px 0 $blush inset, 0 0 10px 4px $blush;    
+    }
+    &:focus{
+      &::placeholder{
+        color: transparent;
+      }
+    }
+    @media (max-width: $desktop-breakpoint){
+      width: 90vw;
+    }
+
+  
+  }
+  .form-description{
+    border: none;
+    border-radius: 0.5rem;
+    text-align: center;
+    outline: none;
+    height: 20rem;
+    width: 70rem;
+    background: lighten($dark-grey,7);
+    font-size: $font-size-xl;
+    color: white;
+    font-weight: 400;
+    margin-bottom: 3rem;
+    &:focus{
+      border: 1px solid $blush;
+      box-shadow: 0 0 10px 0 $blush inset, 0 0 10px 4px $blush;
+    }
+    &::placeholder{
+      font-weight: 600;
+    }
+    &:focus{
+      &::placeholder{
+        color: transparent;
+        
+      }
+    }
+
+    @media (max-width: $desktop-breakpoint){
+      width: 90vw;
+    }
+  }
+
+  .form-venue, .form-fees{
+    grid-area: others;
+    display: flex;
+    justify-content: center;
+    // flex-direction: column;
+    margin-bottom: 2rem;
+    justify-content: center;
+    & label{
+      color:$blush;
+      font-size: $font-size-xl;
+    }
+    & input{
+      height: 3rem;
+      margin-left: 2rem;
+      border-radius: 0.5rem;
+      outline: none;
+      border:none;
+      text-align: center;
+      background: lighten($dark-grey,7);
+      color:white;
+
+      &:focus{
+        border: 1px solid $blush;
+        box-shadow: 0 0 10px 0 $blush inset, 0 0 10px 2px $blush;
+      }
+
+    }
+
+  }
+
+  .form-time{
+    display: flex;
+    justify-content: space-around;
+    // @media screen and (max-width: $desktop-breakpoint){
+    //   justify-items: flex-end;
+    // }
+    & label{
+      color:$blush;
+      font-size: $font-size-xl;
+      margin: 0 3rem;
+    }
+
+
+    .to{
+      font-size: $font-size-large;
+      margin: 0.2rem 2rem;
+    }
+    & input{
+      height: 3rem;
+      // margin-left: 2rem;
+      border-radius: 0.5rem;
+      outline: none;
+      border:none;
+      text-align: center;
+      background: lighten($dark-grey,7);
+      color:white;
+      margin-bottom: 2rem;
+      &:focus{
+        border: 1px solid $blush;
+        box-shadow: 0 0 10px 0 $blush inset, 0 0 10px 2px $blush;
+      }
+
+    }
+  } 
+
+  .to{
+    margin-right:0;
+  }
+
+  .re-time-picker span{
+    margin-left:3rem;
+  }
+  .rc-time-picker-input{
+    // padding: 0 3.4rem;
+    // margin-right: 1rem;
+  }
+  .icon{
+    position: absolute;
+    right: -2.5rem;
+    bottom: 3.2rem;
+    color: lighten($dark-grey,5);
+  }
+
+  .form-fees label{
     margin-right: 2rem;
   }
-}
 
-.form-title{
-  border: none;
-  border-bottom: 1px solid $blush;
-  outline: none;
-  height: 8rem;
-  font-size: $font-size-2x;
-  color: #181818;
-  font-weight: 700;
-  margin-bottom: 4rem;
-  &:focus{
-    border-bottom: 1px solid $blue;
+  .form-image-exist{
+    display:flex;
+    justify-content: center;
   }
-}
-.form-content{
-  outline: none;
-  margin: 2rem;
-  height: 60vh;
-  font-size: $font-size-large;
-  color: darken($color_grey_dark,20%);
-  font-weight: 400;
-}
-
-
-.form-image-exist{
-  display:flex;
-  justify-content: center;
-}

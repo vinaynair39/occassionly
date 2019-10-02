@@ -5,9 +5,10 @@ import {startAddEvent} from '../actions/events'
 
 export const AddEventPage = ({addEvent, history}) => (
     <div>
-        <div className="content-container">
+        <div>
         <EventForm onSubmit = {(event) => {
             addEvent(event);
+            console.log(event);
             history.push('/');
             }}/>
         </div>
