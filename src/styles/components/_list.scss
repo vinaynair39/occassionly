@@ -152,19 +152,31 @@
   justify-content: space-between;
   margin-left: 4rem;
   margin-bottom: 2rem;
-  h5{
-    font-size : 3rem;
-    color : #C3C3C3;
+  & label{
+    margin-top: 0.3rem;
+    color: $dark-grey;
+  }
+
+  & > div{
+    display: flex;
+  }
+
+  & > div> div{
+    display: flex;  
+  }
+  & h5{
+    font-size : 2rem;
+    color : darken(#C3C3C3, 20);
     margin: 0;
   }
-  h6{
-    font-size : 2rem;
-    color : #C3C3C3;
+  & h6{
+    font-size : 1.7rem;
+    color : darken(#C3C3C3, 20);
     margin: 0;
   }
 
   
-  ul{
+  & ul{
     display: flex;
     align-items: flex-end;
     justify-content: end;
@@ -175,7 +187,7 @@
       justify-content: center;
     }
   }
-  li{
+  & li{
     list-style: none;
     padding-right: 40px;
     color : #7B7B7B;

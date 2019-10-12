@@ -78,13 +78,13 @@
   display: block;
   margin: 40px auto 0px;
   text-align: center;
-  background: #ed2553;
+  background: $orange;
   border-radius: 3px;
-  box-shadow: 0 10px 20px -8px rgb(240, 75, 113);
+  box-shadow: 0 10px 20px -15px $orange;
   padding: 10px 17px;
   font-size: 18px;
   cursor: pointer;
-  border: 1px inherit;
+  border: 1px $blue;
   outline: none;
   color: #ffffff;
   text-decoration: none;
@@ -102,9 +102,9 @@
   display: block;
   margin: 40px auto 0px;
   text-align: center;
-  background: $voilet;
+  background: $blue;
   border-radius: 3px;
-  box-shadow: 0 10px 20px -8px rgb(240, 75, 113);
+  box-shadow: 0 10px 20px -10px $grey;
   padding: 10px 17px;
   font-size: 18px;
   cursor: pointer;

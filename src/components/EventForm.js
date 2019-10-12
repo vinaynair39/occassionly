@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import { DateRangePicker, SingleDatePicker } from 'react-dates';
 import moment from 'moment';
 import 'react-dates/initialize';
@@ -17,9 +17,9 @@ const EventForm = (props) => {
     const [calendarFocused, onCalendarFocusedChange] = useState(false);
     const [error, onErrorChange] = useState('');
     const [toggle, toggler] = useState(false);
+    const [image, onImage] = useState();
     const [multiDayEvent, onMultiDayEventChange] = useState('');
     const formData = new FormData();
-
 
     const onTitleChange = (e) => {
         onEventNameChange(e.target.value);
@@ -56,8 +56,9 @@ const EventForm = (props) => {
         fileInput.click();
     }
     const onImageChange = (e) => {
-        const image = e.target.files[0];
-        formData.append('image', image, image.name);
+        onImage(e.target.files[0]);
+        const url = URL.createObjectURL(e.target.files[0]);
+        onImageUrlChange(url);
     }
 
     //for DateRangePicker
@@ -94,8 +95,8 @@ const EventForm = (props) => {
         else if(!location) {
             onErrorChange('Please provide the venue.');
         } 
-        else if(!eventName) {
-            onErrorChange('Please provide the Event name.');
+        else if(!fee) {
+            onErrorChange('Please provide the fee.');
         } 
 
         else{
@@ -117,7 +118,8 @@ const EventForm = (props) => {
             formData.append('startTime', startTime.format("LT"));
             formData.append('endTime', endTime.format("LT"))
             formData.append('fee', fee);
-            formData.append('location', location)
+            formData.append('location', location);
+            formData.append('image', image, image.name);
             console.log(check)
             props.onSubmit(formData);
         }
@@ -125,7 +127,7 @@ const EventForm = (props) => {
     return (
         <div className="form">
             <div className="form-image">
-                {props.event ? <div className="form-image-exist"><img src={props.event.imageUrl} alt='' /></div> : <img src='images/empty.jpg' alt='' />}
+                {props.event ? <div className="form-image-exist"><img src={props.event.imageUrl} alt='' /></div> : (imageUrl ? <img src={imageUrl} alt="" /> : <img src='images/empty.jpg' alt=''/>)}
                 <input type="file" hidden="hidden" name="" id="imageChange" onChange={onImageChange} />
                 <button className="btn third" onClick={handleEditPicture}>{props.event ? 'edit image' : "add image"}</button>
             </div>

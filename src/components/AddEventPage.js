@@ -8,7 +8,7 @@ export const AddEventPage = ({addEvent, history}) => (
         <div>
         <EventForm onSubmit = {(event) => {
             addEvent(event);
-            console.log(event);
+            console.log(event.get('image'));
             history.push('/');
             }}/>
         </div>

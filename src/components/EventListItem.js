@@ -12,14 +12,14 @@ export const EventListItem = ({ eventName, description, time, userHandle, imageU
                 {imageUrl ? <img src={imageUrl} alt=""/> : <img src='/images/img5.jpeg' alt=""/>}
             </div>
             <div className="list-card__content">
-            <Link className="list-card__body-title" to={`/blog/${id}`}>
+            <Link className="list-card__body-title" to={`/event/${id}`}>
                     {eventName}
                 <div className="list-card__body-author">
                     
                     <h3>{userHandle}</h3>
                 </div>  
                 <div>
-                    <p className="list-card__content-text">description</p>
+                    <p className="list-card__content-text">{description}</p>
                 </div>
             </Link>
             </div>

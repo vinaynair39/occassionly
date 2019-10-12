@@ -1,0 +1,26 @@
+.blog-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.event-card__by{
+    display: flex;
+    justify-content: center;
+}
+
+.event-card__title{
+    text-align: center;
+}
+.event-card__by p{
+    margin-right: 2rem;
+    font-size: $font-size-medium;
+    color:#C3C3C3;
+    font-weight: 500;
+}
+.event-card__by img{
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}

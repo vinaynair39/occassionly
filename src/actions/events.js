@@ -29,3 +29,42 @@ export const startAddEvent = (eventData = {}) => {
         })
     }
 }
+
+
+export const likeEvent = (id) => {
+    return {
+      type: "LIKE_EVENT",
+      id
+    };
+  }
+
+export const setLikeEvent = (eventID) => {
+    return (dispatch) => {
+        return axios.post(`../event/${eventID}/like`).then((res) => {
+            dispatch(likeEvent(eventID))
+        }).catch(err => {
+            if(err.response)
+                alert(err.response.data.error)
+            console.log(err)
+        })
+    }
+}
+
+export const unLikeEvent = (id) => {
+    return {
+      type: "UNLIKE_EVENT",
+      id
+    };
+  }
+
+export const setUnLikeEvent = (eventID) => {
+    return (dispatch) => {
+        return axios.post(`../event/${eventID}/unlike`).then((res) => {
+            dispatch(unLikeEvent(eventID))
+        }).catch(err => {
+            if(err.response)
+                alert(err.response.data.error)
+            console.log(err)
+        })
+    }
+}
