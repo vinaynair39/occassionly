@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Link from 'react-router-dom/Link'
 import { setLikeEvent, setUnLikeEvent, } from '../actions/events';
 import { setCheckLikeEvent } from '../actions/user';
+import { startRegisterEvent, startUnRegisterEvent} from '../actions/events';
 // import Comments from './Comments'
 import { faHeart, faCalendarAlt, faClock, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -31,6 +32,13 @@ export const EventCard = (props) => {
             setCheckLike(false)
         });
     };
+
+    const startRegisterEvent = () => {
+        props.registerEvent(id);
+    }
+    const startUnRegisterEvent = () => {
+        props.unRegisterEvent(id);
+    }
 
     return (
         <div className="content-container event-card">
@@ -63,9 +71,15 @@ export const EventCard = (props) => {
                     <p>fee: {props.event.fee}</p>
                 </div>
                 <div>
-                    <p><FontAwesomeIcon icon={faCalendarAlt} />{" " + props.event.startDate + (props.event.endDate !== props.event.startDate && " - " + props.event.endDate)}</p>
+                    <p><FontAwesomeIcon icon={faCalendarAlt} />{" " + props.event.startDate + (props.event.endDate !== props.event.startDate ? " - " + props.event.endDate : "")}</p>
                     <p><FontAwesomeIcon icon={faClock}/>{" " + props.event.startTime + " - " + props.event.endTime}</p>    
                 </div>
+            </div>
+            <div className="event-card__register">
+            {(props.userHandle !== props.event.userHandle && !props.event.members.hasOwnProperty(props.userHandle)) && <button className="btn-secondary button-register" onClick={startRegisterEvent}>Register</button>}
+            {props.userHandle !== props.event.userHandle && <button className="btn-secondary button-join">join group chat</button>}
+            {}
+            {props.event.members.hasOwnProperty(props.userHandle) && <button className="btn-secondary button-register" onClick={startUnRegisterEvent}>Unregister</button>}
             </div>
         </div>
     )
@@ -75,6 +89,9 @@ const mapDispatchToProps = (dispatch) => ({
     likeEvent: (eventId) => dispatch(setLikeEvent(eventId)),
     unLikeEvent: (eventId) => dispatch(setUnLikeEvent(eventId)),
     checkLikeEvent: (eventId) => dispatch(setCheckLikeEvent(eventId)),
+    registerEvent: (eventId) => dispatch(startRegisterEvent(eventId)),
+    unRegisterEvent: (eventId) => dispatch(startUnRegisterEvent(eventId))
+
 });
 
 const mapStateToProps = (state, props) => ({

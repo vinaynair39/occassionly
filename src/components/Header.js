@@ -56,7 +56,7 @@ const Header = (props) => {
                                         <div className="button-dropdown">
                                             <button className="button-dropbtn"><FontAwesomeIcon icon={faUserCircle} size="lg" /></button>
                                             <div className="button-dropdown__content">
-                                                <div><button onClick={props.logout} className="button-logout">{props.userHandle}</button></div>
+                                                <div><Link to="user"><button className="button-logout">{props.userHandle}</button></Link></div>
                                                 <div><button onClick={props.logout} className="button-logout">Logout</button></div>
                                             </div>
                                         </div>
@@ -70,8 +70,8 @@ const Header = (props) => {
                                     <ul>
                                         <button className="header__chat-button">Chats <FontAwesomeIcon icon={faCommentAlt} /></button>
                                         <button className="header__notification-button" data-badge={props.notifications.length} onClick={showDropdownMenu}>Notifications <FontAwesomeIcon icon={faBell} size="lg" /></button>
-                                        <button onClick={props.logout} className="button-logout">User Profle <FontAwesomeIcon icon={faUserCircle} /></button>
-                                        <button onClick={props.logout} className="button-logout">Logout <FontAwesomeIcon icon={faSignOutAlt} /></button>
+                                        <Link to="user"><button className="button-logout">{props.userHandle}</button></Link>
+                                        <button onClick={props.logout} className="button-logout">Logout<FontAwesomeIcon icon={faSignOutAlt} /></button>
                                     </ul>
                                 </div>
                             </div>

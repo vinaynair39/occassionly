@@ -104,3 +104,47 @@ export const setUnLikeEvent = (eventID) => {
     }
 }
 
+
+export const registerEvent = () => ({
+    type: 'REGISTER_EVENT',
+});
+
+export const startRegisterEvent = (id) => {
+    return (dispatch) => {
+        dispatch({type: 'LOADING_UI'});
+        axios.post(`../../event/${id}/register`).then(res => {
+            dispatch(registerEvent(id));
+            alert(res.data);
+            dispatch({type: 'UNLOADING_UI'});
+            history.goBack();
+            return res.data;
+        }).catch(err => {
+            if(err.response)
+                alert(err.response.data.error)
+            console.log(err)
+        })
+    }
+}
+
+export const unRegisterEvent = (id, update) => ({
+    type: 'UNREGISTER_EVENT',
+});
+
+export const startUnRegisterEvent = (id) => {
+    return (dispatch) => {
+        dispatch({type: 'LOADING_UI'});
+        axios.post(`../../event/${id}/unregister`).then(res => {
+            dispatch(unRegisterEvent());
+            alert(res.data)
+            dispatch({type: 'UNLOADING_UI'});
+            history.goBack();
+            return res.data;
+        }).catch(err => {
+            if(err.response)
+                alert(err.response.data.error)
+            console.log(err)
+        })
+    }
+
+
+}

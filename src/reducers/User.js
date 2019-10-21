@@ -1,12 +1,13 @@
 const initialState = {
     checkLike: true,
-    user:{},
+    user: {},
     notifications: [],
     follows: {
         following: [''],
         followers: ['']
     },
     userHandle: '',
+    userEvents: []
 }
 
 const userReducer = (state = initialState, action) => {
@@ -21,6 +22,31 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 userHandle: action.userHandle
             };
+        case 'GET_USER_EVENTS':
+            return {
+                ...state,
+                userEvents: action.events.map(event => event)
+            };
+        case 'ADD_USER_DETAILS':
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    // bio: action.details.bio,
+                    // website: action.details.website,
+                    college: action.details.college,
+                    year: action.details.year,
+                    contact_no: action.details.contact_no,
+                }
+            }
+        case 'ADD_USER_IMAGE':
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    imageUrl: action.imageUrl
+                }
+            }
         case 'GET_AUTHENTICATED_USER':
             return {
                 ...state,

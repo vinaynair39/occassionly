@@ -1,8 +1,15 @@
 .edit-user{
+    font-family: 'Quicksand', sans-serif;
     display: grid;
     grid-template-areas: 
-    "image contents contents";
+    "image contents";
     margin: 5rem 5rem;
+    @media screen and (max-width: $desktop-breakpoint){
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
 }
 
 .edit-user__image{
@@ -30,16 +37,53 @@
     text-align: center;
     grid-area: contents;
     display: flex;
-}
+    & input{
+        height: 3rem;
+        margin-left: 5rem;
+        border-radius: 0.5rem;
+        outline: none;
+        border:none;
+        width: 30rem;
+        text-align: center;
+        background: lighten($dark-grey,7);
+        color:white;
+  
+        &:focus{
+          border: 1px solid $blush;
+          box-shadow: 0 0 10px 0 $blush inset, 0 0 10px 2px $blush;
+        }
 
+        @media screen and (max-width: $desktop-breakpoint){
+            width: 65vw;
+        }
+  
+      }
+}
+.edit-user__userHandle{
+    color: white;
+    margin-bottom: 3rem;
+    & h3{
+        font-size: 3.5rem;
+        margin: 0;
+
+    }
+}
 .edit-user__contents-data{
-    margin-top:5rem;
+    // margin-top:5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-
+    align-items: space-between;
     &>div{
         margin-bottom: 1rem;
+    }
+}
+
+.edit-user__contents-data-flex{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    @media screen and (max-width: $desktop-breakpoint){
+        justify-content: space-between;
     }
 }

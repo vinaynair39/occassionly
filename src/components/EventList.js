@@ -13,7 +13,7 @@ export const EventList = (props) => (
 )
 const mapStateToProps = (state) => ({
     events: selectEvents(state.events, state.filters),
-    // userImage: state.auth.user ? state.auth.user.imageUrl: ''
+    // userImage: state.user.user ? state.auth.user.imageUrl: ''
 });
 
 export default connect(mapStateToProps)(EventList);

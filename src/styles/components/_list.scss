@@ -1,8 +1,9 @@
 .list{
+
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   @media screen and (max-width: $desktop-breakpoint){
     display: flex;
     flex-direction: column;
@@ -103,7 +104,8 @@
   }
   img{
     border-radius: 10rem;
-    height: 3rem;
+    height: 3.4rem;
+    width: 3rem;
     margin-right: 0.5rem;
     @media screen and (max-width: $desktop-breakpoint){
       height: 5rem;   
@@ -112,7 +114,7 @@
   h3{
     font-size: $font-size-small;
     margin: .1rem 1rem 0 0 ;
-    background: $grey;
+    background: $blush;
     border-radius: 1rem;
     padding: 0.4rem 0.8rem;
     font-weight: 100;
@@ -125,8 +127,9 @@
   }
 }
 .list-card__body-title{
-  color: #4B4B4B;
-  font-weight: 700; 
+  text-align: center;
+  color : darken(#C3C3C3, 60);
+  font-weight: 900; 
   text-transform: capitalize;
 }
 
@@ -134,7 +137,8 @@
 	padding-top : 10px;
 	font-size : 0.95rem;
 	line-height: 150%;
-  color : #4B4B4B;
+  color : darken(#C3C3C3, 40);
+  ;
 }
 
 .list-card__content-text{
@@ -148,8 +152,9 @@
 .list-card__body-date {
   grid-area: data;  
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  flex-direction: column;
+  // align-items: center;
+  // justify-content: space-between;
   margin-left: 4rem;
   margin-bottom: 2rem;
   & label{
@@ -158,7 +163,7 @@
   }
 
   & > div{
-    display: flex;
+    margin-bottom: 1rem;
   }
 
   & > div> div{
@@ -166,12 +171,12 @@
   }
   & h5{
     font-size : 2rem;
-    color : darken(#C3C3C3, 20);
+    color : darken(#C3C3C3, 30);
     margin: 0;
   }
   & h6{
     font-size : 1.7rem;
-    color : darken(#C3C3C3, 20);
+    color : darken(#C3C3C3, 30);
     margin: 0;
   }
 
@@ -216,21 +221,21 @@
 
 .list-card__fab{
   position : absolute;
-	right : 50px;
-  bottom : -40px;
+	right : 5px;
+  bottom : -15px;
   @media screen and(max-width:$desktop-breakpoint){
     right : 33vw;
-    bottom : -50px;
+    bottom : -5px;
   }
 	box-sizing: border-box;
 	padding-top: 18px;
-	background-color : $orange;
-	width : 80px;
-	height : 80px;
-	color : white;
+	background-color : transparent;
+	width : 70px;
+	height : 70px;
+	color : $san-juan;
 	text-align : center;
   border-radius : 50%;
-	-webkit-box-shadow: 10px 10px 50px 0px rgba(0,0,0,0.75);
-	-moz-box-shadow: 10px 10px 50px 0px rgba(0,0,0,0.75);
-	box-shadow: 10px 10px 50px 0px rgba(0,0,0,0.75);
+	// -webkit-box-shadow: 10px 10px 50px 0px rgba(0,0,0,0.75);
+	// -moz-box-shadow: 10px 10px 50px 0px rgba(0,0,0,0.75);
+	// box-shadow: 10px 10px 50px 0px rgba(0,0,0,0.75);
 }

@@ -27,6 +27,16 @@
   color:$blush;
   margin: 0.5rem 2rem;
   background: transparent;
+  @media (max-width: $desktop-breakpoint){
+    right: -1.2rem;
+  }
+}
+
+.button-editProfile{
+  right: 1rem;
+  color:$blush;
+  margin: 0.5rem 2rem;
+  background: transparent;
 }
 .button-remove{
   position: absolute;
@@ -35,7 +45,6 @@
   margin: 0.5rem 2rem;
   background: transparent;
 }
-
 
 
 .button-secondary{
@@ -47,6 +56,7 @@
   padding: $s-size 2rem;
   border:none;
   border-radius: 10px;
+  outline: none;
 }
 
 .button-logout{
@@ -78,7 +88,7 @@
   transform: translateY(4px);
 }
 .button-secondary:active {
-  box-shadow: 0 5px darken($grey, $amount: 2);
+  box-shadow: 0 5px darken($orange, $amount: 2);
   transform: translateY(4px);
 }
 .button--link {
@@ -290,9 +300,8 @@ animation-duration: 0.65s;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
-  font-weight: 700;
-
-  &:hover,
+  // font-size: $font-size-medium;
+    &:hover,
   &:focus {
     color: #fff;
     outline: 0;
@@ -300,6 +309,7 @@ animation-duration: 0.65s;
 }
 
 .third {
+  text-align: center;
   border-color: $blush;
   color: #fff;
   // box-shadow: 0 0 40px 40px $blush inset, 0 0 0 0 $blush;
@@ -311,5 +321,27 @@ animation-duration: 0.65s;
 
   &:active {
     transform: translateY(4px);
+  }
+}
+
+
+.button-register{
+  position: fixed;
+  top: 40vh;
+  left: 6.8vw;
+  background: $san-juan;
+  @media screen and (max-width:$desktop-breakpoint){
+    position: static;
+    margin-top: 2rem;
+  }
+}
+.button-join{
+  position: fixed;
+  top: 55vh;
+  left: 5vw;
+  background: $san-juan;
+  @media screen and (max-width:$desktop-breakpoint){
+    position: static;
+   
   }
 }
