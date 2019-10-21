@@ -6,21 +6,70 @@
 
 .event-card__by{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+}
+.event-card__by-name{
+    display: flex;
 }
 
 .event-card__title{
+    text-align: start;
+    color:$white;
+    text-transform: capitalize;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
     text-align: center;
+    margin-top: 0.7rem;
+    margin-bottom: 1rem;
+}
+.event-card__others{
+    display: flex;
+    justify-content: space-between;
+    & p{
+        color: $blush;
+    }
 }
 .event-card__by p{
-    margin-right: 2rem;
-    font-size: $font-size-medium;
-    color:#C3C3C3;
+    font-family: 'Pathway Gothic One', sans-serif;
+    margin: 0;
+    margin-left: 0.5rem;
+    font-size: $font-size-large;
+    color: $blush;
     font-weight: 500;
+    & + p{
+        font-size: $font-size-medium;
+    }
 }
+
 .event-card__by img{
-    height: 4rem;
-    width: 4rem;
+    height: 5rem;
+    width: 5rem;
+    padding: 0.3rem;
     border-radius: 50%;
+    border-top: 1px solid $blush;
+    border-bottom: 1px solid $blush ;
     margin-right: 0.5rem;
+}
+
+.event-card__image{
+    display: flex;
+    justify-content: center;
+    & img{
+        width: 50vw;
+        height: 60vh;
+        margin-top: 3rem;
+        @media screen and (max-width: $desktop-breakpoint) {
+            width: 100vw;
+        }
+    }
+    
+}
+
+.event-card__description{
+    & p{
+        font-family: 'Quicksand', sans-serif; 
+        margin-top: 2rem;
+        color: $white;
+    }
 }

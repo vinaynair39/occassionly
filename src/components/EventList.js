@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import EventListItem from './EventListItem';
-// import selectBlogs from '../selectors/blogs'
+import selectEvents from '../selectors/events'
 
 export const EventList = (props) => (
     <div className="list">
@@ -12,7 +12,7 @@ export const EventList = (props) => (
     </div>
 )
 const mapStateToProps = (state) => ({
-    events: state.events,
+    events: selectEvents(state.events, state.filters),
     // userImage: state.auth.user ? state.auth.user.imageUrl: ''
 });
 

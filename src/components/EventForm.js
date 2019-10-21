@@ -7,10 +7,10 @@ const EventForm = (props) => {
     const [eventName, onEventNameChange] = useState(props.event ? props.event.eventName : '');
     const [description, onDescriptionChange] = useState(props.event ? props.event.description : '');
     const [imageUrl, onImageUrlChange] = useState(props.event ? props.event.imageUrl : '');
-    const [startDate, onStartDateChange] = useState(props.event ? props.event.startDate : moment());
-    const [endDate, onEndDateChange] = useState(props.event ? props.event.endDate : moment());
-    const [startTime, onStartTimeChange] = useState(props.event ? props.event.startTime : moment());
-    const [endTime, onEndTimeChange] = useState(props.event ? props.event.endTime : moment());
+    const [startDate, onStartDateChange] = useState(props.event ? moment(props.event.startDate, 'LL') : moment());
+    const [endDate, onEndDateChange] = useState(props.event ? moment(props.event.endDate, 'LL') : moment());
+    const [startTime, onStartTimeChange] = useState(props.event ? moment(props.event.startTime, 'LT') : moment());
+    const [endTime, onEndTimeChange] = useState(props.event ? moment(props.event.endTime, 'LT') : moment());
     const [location, onLocationChange] = useState(props.event ? props.event.location : '');
     const [fee, onFeeChange] = useState(props.event ? props.event.fee : '');
     const [focusedInput, onFocusedInputChange] = useState(null);
@@ -59,6 +59,8 @@ const EventForm = (props) => {
         onImage(e.target.files[0]);
         const url = URL.createObjectURL(e.target.files[0]);
         onImageUrlChange(url);
+        console.log(!!image);
+
     }
 
     //for DateRangePicker
@@ -119,7 +121,8 @@ const EventForm = (props) => {
             formData.append('endTime', endTime.format("LT"))
             formData.append('fee', fee);
             formData.append('location', location);
-            formData.append('image', image, image.name);
+            console.log(!!image);
+            !!image && formData.append('image', image, image.name);
             console.log(check)
             props.onSubmit(formData);
         }
@@ -127,7 +130,7 @@ const EventForm = (props) => {
     return (
         <div className="form">
             <div className="form-image">
-                {props.event ? <div className="form-image-exist"><img src={props.event.imageUrl} alt='' /></div> : (imageUrl ? <img src={imageUrl} alt="" /> : <img src='images/empty.jpg' alt=''/>)}
+                {props.event ? <div className="form-image-exist"><img src={imageUrl || props.event.imageUrl} alt='' /></div> : (imageUrl ? <img src={imageUrl} alt="" /> : <img src='images/empty.jpg' alt=''/>)}
                 <input type="file" hidden="hidden" name="" id="imageChange" onChange={onImageChange} />
                 <button className="btn third" onClick={handleEditPicture}>{props.event ? 'edit image' : "add image"}</button>
             </div>

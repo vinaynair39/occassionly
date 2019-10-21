@@ -32,7 +32,7 @@ export const LoginPage = ({ startLogin, error,unsetError, loading}) => {
         <div className="box-layout">
             <div className="box-layout__logo-outside animated fadeInDown delay-1s">
             </div>
-            {loading && <div class="spinner"></div>}
+            {loading && <div className="spinner"></div>}
             <div className="box-layout__box  animated fadeInRight delay-1s">
             <div className="box-layout__logo-inside">
                     <Tilt className="Tilt" options={{ max : 25 }} >

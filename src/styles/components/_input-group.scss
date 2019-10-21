@@ -84,11 +84,11 @@ $d: 2em;
     }
   
     &[title="Sort by Likes"] {
-      color: $m;
+      color: $orange;
     }
   
     &[title="Recent"] {
-      color: $f;
+      color: $orange;
     }
   }
 }
@@ -100,7 +100,7 @@ input[type="radio"] {
   &:checked ~ label {
     &[title="Sort by Likes"] {
       &::after {
-        background: $yellow;
+        background: $color-prime;
         clip-path: circle(100%);
       }
     }
@@ -109,7 +109,7 @@ input[type="radio"] {
   &:checked ~ label {
     &[title="Recent"] {
       &::after {
-        background: $yellow;
+        background: $color-prime;
         clip-path: circle(100%);
       }
     }

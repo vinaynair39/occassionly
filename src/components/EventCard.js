@@ -1,11 +1,11 @@
-import React, {useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Link from 'react-router-dom/Link'
-import {setLikeEvent, setUnLikeEvent,} from '../actions/events';
-import {setCheckLikeEvent} from '../actions/user';
+import { setLikeEvent, setUnLikeEvent, } from '../actions/events';
+import { setCheckLikeEvent } from '../actions/user';
 // import Comments from './Comments'
-import { faHeart , faCalendarAlt, faPenAlt} from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faCalendarAlt, faClock, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export const EventCard = (props) => {
     const [likeCount, setLikeCount] = useState(props.event.likeCount);
@@ -16,7 +16,7 @@ export const EventCard = (props) => {
         props.checkLikeEvent(id).then(data => {
             setCheckLike(data)
         });
-    },[])
+    }, [])
 
     const onClickLike = () => {
         props.likeEvent(id).then(() => {
@@ -32,32 +32,41 @@ export const EventCard = (props) => {
         });
     };
 
-    return(
+    return (
         <div className="content-container event-card">
             {props.event.userHandle === props.userHandle && <Link to={`../edit/${props.event.id}`}>
-            <button>Edit</button>
+                <button className="button button-edit"><FontAwesomeIcon icon={faEdit} />Edit</button>
             </Link>
             }
             <h2 className="event-card__title">{props.event.eventName}</h2>
             <div className="event-card__by">
-            <img src={props.event.userImageUrl} alt=""/> <Link to={`../user/${props.event.userHandle}`} ><p><FontAwesomeIcon icon={faPenAlt} color="salmon"/> {props.event.userHandle}</p></Link>
-                <p><FontAwesomeIcon icon={faCalendarAlt} color="salmon"/>  {moment(props.event.createdAt).format("Do MMM YYYY")}</p>
+                <div className="event-card__by-name" >
+                    <img src={props.event.userImageUrl} alt="" /> <Link to={`../user/${props.event.userHandle}`}>
+                        <p> {props.event.userHandle}</p>
+                        <p>{moment(props.event.createdAt).format("MMM do")}</p>
+                    </Link>
+                </div>
+                <div className="event-card__by-like" >
+                    {checkLike ? (<div className="event-card__button"><button title='unlike?' className="btn-secondary" onClick={onClickUnLike}><FontAwesomeIcon icon={faHeart} /> {likeCount}</button></div>) : (
+                        <button title='like?' className="btn-primary" onClick={onClickLike}><FontAwesomeIcon icon={faHeart} /> {likeCount}</button>)}
+                </div>
             </div>
-            <div className=""event-card__image>
-                <img src={props.event.imageUrl} alt=""/>
+            <div className="event-card__image">
+                <img src={props.event.imageUrl} alt="" />
             </div>
-            <div>
+            <div className="event-card__description">
                 <p>{props.event.description}</p>
             </div>
-            {checkLike ? (<button className="btn-secondary" onClick={onClickUnLike}><FontAwesomeIcon icon={faHeart}/> {likeCount}</button>) : (
-            <button className="btn-primary" onClick={onClickLike}><FontAwesomeIcon icon={faHeart}/> {likeCount}</button>) }
-            {/* <button className="btn-secondary like-review"
-            onClick={onClickLike}><FontAwesomeIcon icon={faHeart}/>{checkLike ? likeCount + " you liked this event!": likeCount}
-            </button>
-            <button 
-            onClick={onClickUnLike}>Unlike */}
-            {/* </button> */}
-            {/* <Comments commentCount={props.event.commentCount} id={id} /> */}
+            <div className="event-card__others">
+                <div>
+                    <p>venue: {props.event.location}</p>
+                    <p>fee: {props.event.fee}</p>
+                </div>
+                <div>
+                    <p><FontAwesomeIcon icon={faCalendarAlt} />{" " + props.event.startDate + (props.event.endDate !== props.event.startDate && " - " + props.event.endDate)}</p>
+                    <p><FontAwesomeIcon icon={faClock}/>{" " + props.event.startTime + " - " + props.event.endTime}</p>    
+                </div>
+            </div>
         </div>
     )
 }
@@ -65,12 +74,12 @@ export const EventCard = (props) => {
 const mapDispatchToProps = (dispatch) => ({
     likeEvent: (eventId) => dispatch(setLikeEvent(eventId)),
     unLikeEvent: (eventId) => dispatch(setUnLikeEvent(eventId)),
-    checkLikeEvent: (eventId) => dispatch(setCheckLikeEvent(eventId)),    
+    checkLikeEvent: (eventId) => dispatch(setCheckLikeEvent(eventId)),
 });
 
 const mapStateToProps = (state, props) => ({
     event: state.events.find(event => event.id === props.match.params.id),
-    userHandle : state.auth.userHandle,
+    userHandle: state.user.userHandle,
     checkLike: state.user.checkLike
 });
 

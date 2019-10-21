@@ -4,51 +4,30 @@ import {startSignUp } from '../actions/auth';
 import isEmail from 'validator/lib/isEmail';
 import Tilt from 'react-tilt';
 import Link from 'react-router-dom/Link';
-
-// import { Input } from 'semantic-ui-react'
 export const LoginPage = ({ startSignUp, error, setUIErrors, loading, unsetError}) => {
 
     const [email, getEmail] = useState('');
     const [password, getPassword] = useState('');
-    const [userHandle, getUserHandle] = useState('');
+    const [handle, getUserHandle] = useState('');
     const [confirmPassword, getConfirmPassword] = useState('');
     const [name, getName] = useState('');
     const [college, getCollege] = useState('');
 
 
-    const credentials = {};
-    let errors;
+
     const onStartSignUp = (e) => {
         e.preventDefault(); 
-        console.log('yolo')
-        if(isEmail(email)){
-            credentials.email = email;  
-        }
-        else{
-            errors = 'invalid Email';
-        }
-        if(password === confirmPassword){
-            credentials.password = password;
-            credentials.confirmPassword = confirmPassword;
-            credentials.college = college;
-        }
-        else{
-            errors = 'password and confirm password does not match';
-        }
-        if((name.length !== 0)){
-            credentials.name = name;
-        }
-        else{
-            errors = 'Please provide a name';
-        }
-        if(!!errors)
-        {   
-            console.log(errors);
-            setUIErrors(errors)
-
-        }  
-        else
+        if(password===confirmPassword){
+            const credentials = {
+                email,
+                name,
+                password,
+                confirmPassword,
+                handle
+            };
             startSignUp(credentials);
+        }
+        
 
 
 }
@@ -68,14 +47,13 @@ const showErrors = () => {
                 </Tilt>
                 <h2 className="box-layout__subtitle">Explore different activities held in RAIT</h2>
                 <div className="box-layout__form">
-                    {error.length > 0 && showErrors()}
                     <form onSubmit={onStartSignUp}>
                        <input type="text" value={name}  
                         placeholder="Name"
                         onChange={e => (getName(e.target.value))}/>
-                        <input type="text" value={college}  
-                        placeholder="College"
-                        onChange={e => (getCollege(e.target.value))}/>
+                        <input type="text" value={handle}  
+                        placeholder="user handle"
+                        onChange={e => (getUserHandle(e.target.value))}/>
                         <input  type="email" value={email}
                         placeholder="email"
                         onChange={e => (getEmail(e.target.value))}/>
@@ -109,7 +87,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-    error: state.auth.error ? state.auth.error : [],
+    error: state.auth.error,
     loading: state.auth.loading
    
 })

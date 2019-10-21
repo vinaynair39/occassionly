@@ -22,7 +22,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background:darken(#2E3740,10%);
+  background:darken(#2E3740,8%);
   // border-radius: 3rem;
   padding: $l-size $m-size;
   text-align: center;
@@ -38,7 +38,7 @@
 }
 
 .box-layout__signup-box {
-  background:fade-out(#2E3740,0);
+  background:darken(#2E3740,8%);
   padding: $l-size $m-size;
   text-align: center;
   width: 40vw;

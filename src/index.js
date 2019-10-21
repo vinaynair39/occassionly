@@ -4,7 +4,8 @@ import * as serviceWorker from './serviceWorker';
 import AppRouter from './routers/AppRouter';
 import {Provider} from 'react-redux';
 import configureStore from './store/configureStore';
-import {login, logout, startGetUserHandle, startGetAuthenticatedUser} from './actions/auth';
+import {login, logout} from './actions/auth';
+import {startGetUserHandle, startGetAuthenticatedUser} from './actions/user';
 import {startSetEvents} from './actions/events';
 import {history} from './routers/AppRouter';
 import jwtDecode from 'jwt-decode';
@@ -50,8 +51,8 @@ if (token) {
     else {
     store.dispatch(login());
     axios.defaults.headers.common['Authorization'] = token;
-    // store.dispatch(startGetUserHandle());
-    // store.dispatch(startGetAuthenticatedUser());
+    store.dispatch(startGetUserHandle());
+    store.dispatch(startGetAuthenticatedUser());
     store.dispatch(startSetEvents()).then(() => {
         renderApp();
         if (history.location.pathname === '/') {

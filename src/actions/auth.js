@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {startSetEvents} from './events';
+import {startGetUserHandle, startGetAuthenticatedUser} from './user';
 
 export const login = () => ({
   type: 'LOGIN',
@@ -11,14 +12,18 @@ export const startSignUp = (credentials) => {
       dispatch({type: 'LOADING_UI'});
       axios.post('/signup', credentials).then((res) => {
         setAuthorizationHeader(res.data.token);
-          dispatch(login());
-          dispatch({type: 'UNLOADING_UI'});
+        dispatch(startGetUserHandle()).then(() => {
+          dispatch(startGetAuthenticatedUser()).then(() => {
+              dispatch(login());
+              dispatch({type: 'UNLOADING_UI'});
+          })
           dispatch(startSetEvents());
+        })
           }).catch(err => {
               console.log(err.response)
               dispatch({
                   type: 'SET_ERRORS',
-                  error: err.response ? (err.response.data.general || err.response.data.email || err.response.data.password) : ''
+                  error: err.response ? (err.response.data.general || err.response.data.email || err.response.data.password || err.response.data.error) : ''
               })
           });
   }
@@ -28,11 +33,16 @@ export const startLogin =  (credentials) => {
   return (dispatch) => {
       dispatch({type: 'LOADING_UI'});
       return axios.post('/login', credentials).then(res => {
-          setAuthorizationHeader(res.data.token);
-          dispatch(login());
-          dispatch({type: 'UNLOADING_UI'});
-          dispatch(startSetEvents());
-          }).catch(err => {
+        setAuthorizationHeader(res.data.token);
+        dispatch(startGetUserHandle()).then(() => {
+            dispatch(startGetAuthenticatedUser()).then(() => {
+                dispatch(login());
+            })
+            dispatch(startSetEvents()).then(() => {
+                dispatch({type: 'UNLOADING_UI'});
+        })
+        })
+        }).catch(err => {
               console.log(err.response)
               dispatch({
                   type: 'SET_ERRORS',

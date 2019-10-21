@@ -1,5 +1,9 @@
 .content-container {
   margin: 0 auto;
-  padding: 0 $s-size;
-  max-width: 80rem;
+  padding: 0 $l-size;
+  max-width: 75rem;
+  @media screen and (max-width: $desktop-breakpoint) {
+    width: 100vw;
+    padding: 0 $s-size;
+  }
 }

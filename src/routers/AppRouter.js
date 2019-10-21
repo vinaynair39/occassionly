@@ -7,9 +7,9 @@ import NotFoundPage from '../components/NotFoundPage';
 import LoginPage from '../components/LoginPage';
 import AddEventPage from '../components/AddEventPage';
 import EventCard from '../components/EventCard';
+import EditEventPage from '../components/EditEventPage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-
 export const history = createHistory();
 
 const AppRouter = () => (
@@ -21,6 +21,7 @@ const AppRouter = () => (
         <PrivateRoute path="/dashboard" component={DashboardPage} />
         <PrivateRoute path="/add" component={AddEventPage} />
         <PrivateRoute path='/event/:id' component={EventCard}></PrivateRoute>
+        <PrivateRoute path='/edit/:id' component={EditEventPage}></PrivateRoute>
         <Route component={NotFoundPage} />
       </Switch>
     </div>

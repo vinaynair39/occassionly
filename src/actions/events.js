@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import {history} from '../routers/AppRouter';
 export const setEvents = (events) => {
     return {
       type: "SET_EVENTS",
@@ -29,6 +29,40 @@ export const startAddEvent = (eventData = {}) => {
         })
     }
 }
+export const editEvent = (id, update) => ({
+    type: 'EDIT_EVENT',
+    id,
+    update
+});
+
+export const startEditEvent = (id, update={}) => {
+    return (dispatch) => {
+        dispatch({type: 'LOADING_UI'});
+        axios.post(`../../event/${id}/edit`, update).then(res => {
+            dispatch(editEvent(id, res.data))
+            dispatch({type: 'UNLOADING_UI'});
+            history.goBack();
+
+            return res.data;
+        })
+    }
+
+}
+
+export const removeEvent = (id) => ({
+    type: 'REMOVE_EVENT',
+    id
+});
+
+export const startRemoveEvent= (id) => {
+    return (dispatch) => {
+        axios.delete(`../../event/${id}/cancel`).then((res) => {
+            dispatch(removeEvent(id))
+            window.alert(res.data.success);
+            history.push('/dashboard');
+        })
+    }
+}
 
 
 export const likeEvent = (id) => {
@@ -50,6 +84,7 @@ export const setLikeEvent = (eventID) => {
     }
 }
 
+
 export const unLikeEvent = (id) => {
     return {
       type: "UNLIKE_EVENT",
@@ -68,3 +103,4 @@ export const setUnLikeEvent = (eventID) => {
         })
     }
 }
+

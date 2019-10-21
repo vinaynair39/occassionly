@@ -21,6 +21,23 @@
 
 }
 
+.button-edit{
+  position: absolute;
+  right: 1rem;
+  color:$blush;
+  margin: 0.5rem 2rem;
+  background: transparent;
+}
+.button-remove{
+  position: absolute;
+  right: 0;
+  color:$blush;
+  margin: 0.5rem 2rem;
+  background: transparent;
+}
+
+
+
 .button-secondary{
   height: 5rem;
   width: 7rem;
@@ -76,7 +93,10 @@
 
 .btn-secondary {
   display: block;
-  margin: 40px auto 0px;
+  margin: 10px 5px 0 0;
+  // position: fixed;
+  // left: 10vw;
+  // bottom: 45vh;  
   text-align: center;
   background: $orange;
   border-radius: 3px;
@@ -94,17 +114,22 @@
 .btn-secondary:hover {
   transform: translateY(-3px);
 }
+
+
 .btn-secondary .fa {
   margin-right: 5px;
 }
 
 .btn-primary {
   display: block;
-  margin: 40px auto 0px;
+  // position: fixed;
+  // left: 10vw;
+  // bottom: 45vh; 
+  margin: 10px 5px 0 0;
   text-align: center;
-  background: $blue;
+  background: $san-juan;
   border-radius: 3px;
-  box-shadow: 0 10px 20px -10px $grey;
+  box-shadow: 0 10px 20px -10px $san-juan;
   padding: 10px 17px;
   font-size: 18px;
   cursor: pointer;
