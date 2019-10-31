@@ -80,9 +80,9 @@ export const startGetUserEvents =  (userHandle) => {
         dispatch({type: 'LOADING_UI'});
         console.log(123456);
         return axios.get(`/user/${userHandle}`).then(({data}) => {
-            console.log(userHandle)
             dispatch(getUserEvents(data.events))
             dispatch({type: 'UNLOADING_UI'});
+            return data;
         }).catch(err => console.log(err.response))
     }
 };

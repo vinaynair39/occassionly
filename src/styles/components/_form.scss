@@ -31,6 +31,8 @@
     justify-content: flex-start;
     & img{
       height:50vh;
+      width:100%;
+
     }
 
     @media (max-width: $desktop-breakpoint){
@@ -247,4 +249,7 @@
   .form-image-exist{
     display:flex;
     justify-content: center;
+    img{
+      
+    }
   }

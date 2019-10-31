@@ -114,7 +114,7 @@ export const startRegisterEvent = (id) => {
         dispatch({type: 'LOADING_UI'});
         axios.post(`../../event/${id}/register`).then(res => {
             dispatch(registerEvent(id));
-            alert(res.data);
+            alert(res.data.message);
             dispatch({type: 'UNLOADING_UI'});
             history.goBack();
             return res.data;
@@ -135,7 +135,7 @@ export const startUnRegisterEvent = (id) => {
         dispatch({type: 'LOADING_UI'});
         axios.post(`../../event/${id}/unregister`).then(res => {
             dispatch(unRegisterEvent());
-            alert(res.data)
+            alert(res.data.message);
             dispatch({type: 'UNLOADING_UI'});
             history.goBack();
             return res.data;

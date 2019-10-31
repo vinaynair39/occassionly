@@ -10,14 +10,21 @@ import { faHeart, faCalendarAlt, faClock, faEdit } from "@fortawesome/free-solid
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export const EventCard = (props) => {
     const [likeCount, setLikeCount] = useState(props.event.likeCount);
-    const [checkLike, setCheckLike] = useState(props.checkLike)
+    const [checkLike, setCheckLike] = useState(props.checkLike);
+    const [checkRegister, setRegister] = useState(props.event.members.hasOwnProperty(props.userHandle));
+
     const id = props.match.params.id;
 
     useEffect(() => {
         props.checkLikeEvent(id).then(data => {
             setCheckLike(data)
         });
+
     }, [])
+
+    useEffect(() => {
+        setRegister(props.event.members.hasOwnProperty(props.userHandle));
+    }, [checkRegister])
 
     const onClickLike = () => {
         props.likeEvent(id).then(() => {
@@ -76,10 +83,10 @@ export const EventCard = (props) => {
                 </div>
             </div>
             <div className="event-card__register">
-            {(props.userHandle !== props.event.userHandle && !props.event.members.hasOwnProperty(props.userHandle)) && <button className="btn-secondary button-register" onClick={startRegisterEvent}>Register</button>}
+            {!checkRegister && <button className="btn-secondary button-register" onClick={startRegisterEvent}>Register</button>}
             {props.userHandle !== props.event.userHandle && <button className="btn-secondary button-join">join group chat</button>}
             {}
-            {props.event.members.hasOwnProperty(props.userHandle) && <button className="btn-secondary button-register" onClick={startUnRegisterEvent}>Unregister</button>}
+            {checkRegister&& <button className="btn-secondary button-register" onClick={startUnRegisterEvent}>Unregister</button>}
             </div>
         </div>
     )
