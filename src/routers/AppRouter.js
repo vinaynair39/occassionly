@@ -27,7 +27,7 @@ const AppRouter = () => (
         <PrivateRoute path='/edit/:id' component={EditEventPage}></PrivateRoute>
         <PrivateRoute path='/user/:handle' component={MyEventsPage}></PrivateRoute>
         <PrivateRoute path='/edit' component={EditUserDetails} exact={true}></PrivateRoute>
-        <PrivateRoute path='/user' component={MyEventsPage} exact={true}></PrivateRoute>
+        <PrivateRoute path='/me' component={MyEventsPage} exact={true}></PrivateRoute>
         <Route component={NotFoundPage} />
       </Switch>
     </div>

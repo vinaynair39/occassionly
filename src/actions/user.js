@@ -10,7 +10,7 @@ export const checkLikeEvent = (condition) => {
 
 export const setCheckLikeEvent = (eventId) => {
     return (dispatch) => {
-        return axios.get(`${eventId}/checkLike`).then((res) => {
+        return axios.get(`https://us-central1-sem5proj-19434.cloudfunctions.net/api/event/${eventId}/checkLike`).then((res) => {
             dispatch(checkLikeEvent(res.data))
             return res.data;
         }).catch(err => {
@@ -31,7 +31,7 @@ export const getAuthenticatedUser =  (user, notifications,follows) => {
 };
 export const startGetAuthenticatedUser =  () => {
     return (dispatch) => {
-        return axios.get(`/user/profile`).then(res => {
+        return axios.get(`https://us-central1-sem5proj-19434.cloudfunctions.net/api/user/profile`).then(res => {
             dispatch(getAuthenticatedUser(res.data.credentials, res.data.notifications,res.data.follows))
         }).catch(err => console.log(err.response))
     }
@@ -46,7 +46,7 @@ export const getUserHandle =  (userHandle) => {
 };
 export const startGetUserHandle =  () => {
     return (dispatch) => {
-        return axios.get('/userHandle').then(async res => {
+        return axios.get('https://us-central1-sem5proj-19434.cloudfunctions.net/api/userHandle').then(async res => {
             dispatch(getUserHandle(res.data))
             console.log(res.data);
             await sessionStorage.setItem('userHandle', res.data)
@@ -57,7 +57,8 @@ export const startGetUserHandle =  () => {
 export const startGetUserDetails =  (userHandle) => {
     return (dispatch) => {
         dispatch({type: 'LOADING_UI'});
-        return axios.get(`/user/${userHandle}`).then(({data}) => {
+        console.log()
+        return axios.get(`https://us-central1-sem5proj-19434.cloudfunctions.net/api/user/${userHandle}`).then(({data}) => {
             console.log(data);
             const userData = {
                 user: data.user,
@@ -79,7 +80,7 @@ export const startGetUserEvents =  (userHandle) => {
     return (dispatch) => {
         dispatch({type: 'LOADING_UI'});
         console.log(123456);
-        return axios.get(`/user/${userHandle}`).then(({data}) => {
+        return axios.get(`https://us-central1-sem5proj-19434.cloudfunctions.net/api/user/${userHandle}`).then(({data}) => {
             dispatch(getUserEvents(data.events))
             dispatch({type: 'UNLOADING_UI'});
             return data;
@@ -96,7 +97,7 @@ export const addUserData = (details) => {
 
 export const startAddUserDetails =  (details) => {
     return (dispatch) => {
-        return axios.post(`/user`, details).then(res => {
+        return axios.post(`https://us-central1-sem5proj-19434.cloudfunctions.net/api/user`, details).then(res => {
             dispatch(addUserData(details));
             history.goBack();
         }).catch(err => console.log(err.response))
@@ -113,7 +114,7 @@ export const addUserImage = (imageUrl) => {
 export const startAddUserImage =  (formData) => {
     return (dispatch) => {
         dispatch({type: 'LOADING_UI'});
-        return axios.post(`/user/image`, formData).then(res => {
+        return axios.post(`https://us-central1-sem5proj-19434.cloudfunctions.net/api/user/image`, formData).then(res => {
             dispatch(addUserImage(res.data));
             dispatch({type: 'UNLOADING_UI'});
             return res.data;

@@ -8,6 +8,7 @@ export const UserDetails = ({user, handle,getUserDetails, follows}) => {
     const [followers, setFollowers] = useState([])
     const [following, setFollowing] = useState([])
     useEffect(() => {
+        console.log(handle);
         if(handle){
             getUserDetails(handle).then(data => {
                 setUserData(data.user);
@@ -30,7 +31,9 @@ export const UserDetails = ({user, handle,getUserDetails, follows}) => {
             {/* <div>
                 <label>website: </label>{(userData.website && (<a href={userData.website} alt="">{userData.website}</a>))||(user.website && <a href={user.website} alt="">{user.website}</a>)}
             </div> */}
-            <Link to="edit"><button className="button button-editProfile">Edit Profile</button></Link>
+            {user.handle === sessionStorage.getItem('userHandle') && <Link to="edit"><button className="button button-editProfile">Edit Profile</button></Link>
+            }
+            
         </div>
     );
 }

@@ -3,8 +3,10 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { startLogout } from '../actions/auth';
 import { Link } from 'react-router-dom'
+import {history} from '../routers/AppRouter';
 import { faPlus, faBlog, faBell, faCommentAlt, faUserCircle, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import jwtDecode from 'jwt-decode';
 
 
 
@@ -28,12 +30,12 @@ const Header = (props) => {
 
     }
 
-        const getNotifications = () => {
-            return props.notifications.map(notification => {
-                const path = notification.notificationId ? '/event/' + notification.eventId : '/dashboard';
-                return <Link to={path}><button>{notification.sender} {notification.type === 'like' ? 'liked' : 'commented on'} your event</button></Link>
-            })
-        }
+    const getNotifications = () => {
+        return props.notifications.map(notification => {
+            const path = notification.notificationId ? '/event/' + notification.eventId : '/dashboard';
+            return <Link to={path}><button>{notification.sender} {notification.type === 'like' ? 'liked' : 'commented on'} your event</button></Link>
+        })
+    }
 
         return (
             <div className="header">
@@ -50,13 +52,13 @@ const Header = (props) => {
                             <div>
                                 <div>
                                     <ul id="menuToggle">
-                                        <Link to="/add"><button className="scale"><FontAwesomeIcon icon={faPlus} /></button></Link>
+                                        <Link to="../add"><button className="scale"><FontAwesomeIcon icon={faPlus}/></button></Link>
                                         <button title="Chatroom for the events you joined" className="header__chat-button scale" ><FontAwesomeIcon icon={faCommentAlt} /></button>
-                                        <button title="Notificiations" className="header__notification-button scale" data-badge={props.notifications.length} onClick={onClick}><FontAwesomeIcon icon={faBell} size="lg" /></button>
+                                        <button title="Notificiations" className="header__notification-button scale" data-badge={props.notifications.length}><FontAwesomeIcon icon={faBell} size="lg" /></button>
                                         <div className="button-dropdown">
                                             <button className="button-dropbtn"><FontAwesomeIcon icon={faUserCircle} size="lg" /></button>
                                             <div className="button-dropdown__content">
-                                                <div><Link to="user"><button className="button-logout">{props.userHandle}</button></Link></div>
+                                                <div><Link to="../../me"><button className="button-logout">{props.userHandle}</button></Link></div>
                                                 <div><button onClick={props.logout} className="button-logout">Logout</button></div>
                                             </div>
                                         </div>
@@ -70,7 +72,7 @@ const Header = (props) => {
                                     <ul>
                                         <button className="header__chat-button">Chats <FontAwesomeIcon icon={faCommentAlt} /></button>
                                         <button className="header__notification-button" data-badge={props.notifications.length} onClick={showDropdownMenu}>Notifications <FontAwesomeIcon icon={faBell} size="lg" /></button>
-                                        <Link to="user"><button className="button-logout">{props.userHandle}</button></Link>
+                                        <Link to="../../me"><button className="button-logout">{props.userHandle}</button></Link>
                                         <button onClick={props.logout} className="button-logout">Logout<FontAwesomeIcon icon={faSignOutAlt} /></button>
                                     </ul>
                                 </div>

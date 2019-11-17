@@ -27,7 +27,7 @@
   padding: $l-size $m-size;
   text-align: center;
   width: 38vw;
-  // height: 58rem;
+  // height: 58rem`;
   height: 100vh;
   transition: all 0.2s ease-in;
   @media screen and (max-width: $desktop-breakpoint){
@@ -43,6 +43,11 @@
   text-align: center;
   width: 40vw;
   height: 100vh;
+  @media screen and (max-width: $desktop-breakpoint){
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+  }
 }
 
 
@@ -124,9 +129,9 @@
   border-radius: 3px;
 }
 .box-layout__question {
-  margin: 1rem 0 0.5rem 0;
+  margin: 2rem 0 0.5rem 0;
   color: $skin;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 
 h5{

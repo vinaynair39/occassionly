@@ -9,7 +9,7 @@ export const setEvents = (events) => {
 
 export const startSetEvents = () => {
     return (dispatch) => {
-        return axios.get('/events').then(res => {
+        return axios.get('https://us-central1-sem5proj-19434.cloudfunctions.net/api/events').then(res => {
             dispatch(setEvents(res.data));
         })
     }
@@ -22,7 +22,7 @@ export const addEvent = (event) => ({
 
 export const startAddEvent = (eventData = {}) => {
     return (dispatch) => {
-        axios.post('../../event/create', eventData).then((res) => {
+        axios.post('https://us-central1-sem5proj-19434.cloudfunctions.net/api/event/create', eventData).then((res) => {
             dispatch(addEvent(res.data));
         }).catch(err => {
             console.log(err.response)
@@ -38,7 +38,7 @@ export const editEvent = (id, update) => ({
 export const startEditEvent = (id, update={}) => {
     return (dispatch) => {
         dispatch({type: 'LOADING_UI'});
-        axios.post(`../../event/${id}/edit`, update).then(res => {
+        axios.post(`https://us-central1-sem5proj-19434.cloudfunctions.net/api/event/${id}/edit`, update).then(res => {
             dispatch(editEvent(id, res.data))
             dispatch({type: 'UNLOADING_UI'});
             history.goBack();
@@ -56,7 +56,7 @@ export const removeEvent = (id) => ({
 
 export const startRemoveEvent= (id) => {
     return (dispatch) => {
-        axios.delete(`../../event/${id}/cancel`).then((res) => {
+        axios.delete(`https://us-central1-sem5proj-19434.cloudfunctions.net/api/event/${id}/cancel`).then((res) => {
             dispatch(removeEvent(id))
             window.alert(res.data.success);
             history.push('/dashboard');
@@ -74,7 +74,7 @@ export const likeEvent = (id) => {
 
 export const setLikeEvent = (eventID) => {
     return (dispatch) => {
-        return axios.post(`../event/${eventID}/like`).then((res) => {
+        return axios.post(`https://us-central1-sem5proj-19434.cloudfunctions.net/api/event/${eventID}/like`).then((res) => {
             dispatch(likeEvent(eventID))
         }).catch(err => {
             if(err.response)
@@ -94,7 +94,7 @@ export const unLikeEvent = (id) => {
 
 export const setUnLikeEvent = (eventID) => {
     return (dispatch) => {
-        return axios.post(`../event/${eventID}/unlike`).then((res) => {
+        return axios.post(`https://us-central1-sem5proj-19434.cloudfunctions.net/api/event/${eventID}/unlike`).then((res) => {
             dispatch(unLikeEvent(eventID))
         }).catch(err => {
             if(err.response)
@@ -112,7 +112,7 @@ export const registerEvent = () => ({
 export const startRegisterEvent = (id) => {
     return (dispatch) => {
         dispatch({type: 'LOADING_UI'});
-        axios.post(`../../event/${id}/register`).then(res => {
+        axios.post(`https://us-central1-sem5proj-19434.cloudfunctions.net/api/event/${id}/register`).then(res => {
             dispatch(registerEvent(id));
             alert(res.data.message);
             dispatch({type: 'UNLOADING_UI'});
@@ -133,7 +133,7 @@ export const unRegisterEvent = (id, update) => ({
 export const startUnRegisterEvent = (id) => {
     return (dispatch) => {
         dispatch({type: 'LOADING_UI'});
-        axios.post(`../../event/${id}/unregister`).then(res => {
+        axios.post(`https://us-central1-sem5proj-19434.cloudfunctions.net/api/event/${id}/unregister`).then(res => {
             dispatch(unRegisterEvent());
             alert(res.data.message);
             dispatch({type: 'UNLOADING_UI'});

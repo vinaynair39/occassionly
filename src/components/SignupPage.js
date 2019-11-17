@@ -26,8 +26,11 @@ export const LoginPage = ({ startSignUp, error, setUIErrors, loading, unsetError
                 handle
             };
             startSignUp(credentials);
+       
         }
-        
+        else{
+            alert("Your password doesn't match!");
+        }
 
 
 }

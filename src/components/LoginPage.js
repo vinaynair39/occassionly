@@ -54,8 +54,8 @@ export const LoginPage = ({ startLogin, error,unsetError, loading}) => {
                         className="animated fadeInRight delay-2s"
                         />
                         <button className="button button-primary">Login</button>    
-                        <h5>or login using</h5>
-                        <div className="box-layout__signin"> 
+                        {/* <h5>or login using</h5> */}
+                        {/* <div className="box-layout__signin"> 
                             <button>
                                 <FontAwesomeIcon icon={faGoogle}size="3x"/>
                             </button> 
@@ -63,10 +63,13 @@ export const LoginPage = ({ startLogin, error,unsetError, loading}) => {
                                 <FontAwesomeIcon icon={faFacebookSquare}  size="3x"/>
                             </button>
                             
-                        </div>
+                        </div> */}
                     </form>
                     {error && showErrors()}
-                    <label className="box-layout__question animated infinite pulse">no account? </label><Link to='/signup'>Sign Up</Link>
+                    <div className="box-layout__question">
+                    <label className="animated infinite pulse">no account? </label><Link to='/signup'>Sign Up</Link>
+                    </div>
+                    
                 </div>
             </div>
         </div>

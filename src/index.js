@@ -18,10 +18,6 @@ import './styles/styles.scss';
 
 // import 'semantic-ui-css/semantic.min.css';
 
-
-
-
-
 const store = configureStore();
 
 
@@ -43,6 +39,7 @@ ReactDOM.render(<p>Loading...</p>, document.getElementById('root'));
 const token = sessionStorage.getItem('FBIdToken');
 if (token) {
     const decodedToken = jwtDecode(token);
+    console.log(decodedToken);
     if (decodedToken.exp * 1000 < Date.now()) {
         store.dispatch(logout());
         renderApp();
