@@ -13,7 +13,7 @@
     "firebase": "^6.3.2",
     "history": "^4.9.0",
     "jwt-decode": "^2.2.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "normalize.css": "^8.0.1",
     "rc-time-picker": "^3.7.2",
     "react": "^16.8.6",
