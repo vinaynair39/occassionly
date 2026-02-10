@@ -16,14 +16,6 @@ const eventsReducer = (state = [], action) => {
             });
         case 'REMOVE_EVENT':
             return state.filter((event) => event.id !== action.id);
-        case 'LIKE_EVENT':
-            const index1 = state.findIndex(event => event.id === action.id);
-            state[index1].likeCount += 1;
-            return state
-        case 'UNLIKE_EVENT':
-            let index2 = state.findIndex(event => event.id === action.id);
-            state[index2].likeCount -= 1;
-            return state
         default:
             return state;
     }

@@ -1,8 +1,15 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import ReactDOM from 'react-dom';
+import { MemoryRouter } from 'react-router-dom';
 import NotFoundPage from '../../components/NotFoundPage';
 
-test('should render NotFoundPage correctly', () => {
-  const wrapper = shallow(<NotFoundPage />);
-  expect(wrapper).toMatchSnapshot();
+test('renders not found message', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(
+    <MemoryRouter>
+      <NotFoundPage />
+    </MemoryRouter>,
+    div
+  );
+  expect(div.textContent.toLowerCase()).toContain('404');
 });

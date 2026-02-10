@@ -1,10 +1,10 @@
-.list{
-
+.list {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
   font-family: 'Quicksand', sans-serif;
-  @media screen and (max-width: $desktop-breakpoint){
+
+  @media screen and (max-width: $desktop-breakpoint) {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,52 +13,52 @@
   }
 }
 
-.list-card{ 
+.list-card {
   position: relative;
   height: 35rem;
   width: 59rem;
-  margin: 4rem; 
+  margin: 4rem;
   background: white;
   border-radius: 20px;
   box-shadow: 0 10px 20px rgba($black, 0.3), 0 6px 17px rgba($black, 0.2);
-  @media screen and (max-width: $desktop-breakpoint){
+
+  @media screen and (max-width: $desktop-breakpoint) {
     text-align: center;
     margin: 4.3rem 0;
     border-radius: 3rem;
     width: 100%;
-    height: 65vh; 
+    height: 65vh;
     // padding: 3rem;
   }
 
-  &:hover{
-    -webkit-transform: scale(0.9);  
-    -ms-transform: scale(0.9);  
-    transform: scale(0.92);  
+  &:hover {
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.92);
     -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
-    transform: scale(1.03); 
+    transform: scale(1.03);
     cursor: pointer;
   }
 }
 
-
-
-.list-card__body{
+.list-card__body {
   display: grid;
-  grid-template-columns:  1.3fr 1fr;
+  grid-template-columns: 1.3fr 1fr;
   grid-template-rows: 2fr 1fr;
-  grid-template-areas: 
-  "img content"
-  "data content";
+  grid-template-areas:
+    "img content"
+    "data content";
   height: inherit;
-  @media screen and(max-width: $desktop-breakpoint){
+
+  @media screen and (max-width: $desktop-breakpoint) {
     display: flex;
     flex-direction: column;
   }
 }
 
-.list-card__image img{
+.list-card__image img {
   grid-area: img;
   width: 90%;
   top: -3rem;
@@ -69,29 +69,25 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
-  @media screen and(max-width: $desktop-breakpoint){
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.75);
+
+  @media screen and (max-width: $desktop-breakpoint) {
     display: none;
   }
-  // &:hover{
-  //   background: #333;
-  //   transform: scale(1.2);  
-  //   transition: transform 2s ease-in;
-  // }
 }
 
-.list-card__content{
+.list-card__content {
   overflow: hidden;
   grid-area: content;
   margin: 0.6rem 1rem 0.6rem 0;
-  h3{
-    margin:0 1rem 1rem 0;
+  
+  h3 {
+    margin: 0 1rem 1rem 0;
   }
   padding: 0.5rem;
-
-  
 }
-.list-card__body-author{
+
+.list-card__body-author {
   align-self: start;
   display: flex;
   color: white;
@@ -99,143 +95,150 @@
   padding: .3rem .3rem 1rem .3rem;
   justify-content: flex-start;
   border-bottom: 2px solid #C3C3C3;
-  @media screen and (max-width: $desktop-breakpoint){
+
+  @media screen and (max-width: $desktop-breakpoint) {
     margin-top: 1rem;
   }
-  img{
+
+  img {
     border-radius: 10rem;
     height: 3.4rem;
     width: 3rem;
     margin-right: 0.5rem;
-    @media screen and (max-width: $desktop-breakpoint){
-      height: 5rem;   
-     }
+
+    @media screen and (max-width: $desktop-breakpoint) {
+      height: 5rem;
+    }
   }
-  h3{
+
+  h3 {
     font-size: $font-size-small;
-    margin: .1rem 1rem 0 0 ;
+    margin: .1rem 1rem 0 0;
     background: $blush;
     border-radius: 1rem;
     padding: 0.4rem 0.8rem;
     font-weight: 100;
-    @media screen and (max-width: $desktop-breakpoint){
-      height: 5rem; 
+
+    @media screen and (max-width: $desktop-breakpoint) {
+      height: 5rem;
       font-size: $font-size-large;
       padding: 0 1rem;
       padding-top: 1rem;
-     }
+    }
   }
 }
-.list-card__body-title{
+
+.list-card__body-title {
   text-align: center;
-  color : darken(#C3C3C3, 60);
-  font-weight: 900; 
+  color: darken(#C3C3C3, 60);
+  font-weight: 900;
   text-transform: capitalize;
 }
 
-.list-card__body-content{
-	padding-top : 10px;
-	font-size : 0.95rem;
-	line-height: 150%;
-  color : darken(#C3C3C3, 40);
-  ;
+.list-card__body-content {
+  padding-top: 10px;
+  font-size: 0.95rem;
+  line-height: 150%;
+  color: darken(#C3C3C3, 40);
 }
 
-.list-card__content-text{
-	text-align: justify;
-	padding-top : 10px;
-	font-size : $font-size-small;
-	line-height: 150%;
-	color : #4B4B4B;
+.list-card__content-text {
+  text-align: justify;
+  padding-top: 10px;
+  font-size: $font-size-small;
+  line-height: 150%;
+  color: #4B4B4B;
 }
 
 .list-card__body-date {
-  grid-area: data;  
+  grid-area: data;
   display: flex;
   flex-direction: column;
-  // align-items: center;
-  // justify-content: space-between;
   margin-left: 4rem;
   margin-bottom: 2rem;
-  & label{
+
+  & label {
     margin-top: 0.3rem;
     color: $dark-grey;
   }
 
-  & > div{
+  & > div {
     margin-bottom: 1rem;
   }
 
-  & > div> div{
-    display: flex;  
+  & > div > div {
+    display: flex;
   }
-  & h5{
-    font-size : 2rem;
-    color : darken(#C3C3C3, 30);
-    margin: 0;
-  }
-  & h6{
-    font-size : 1.7rem;
-    color : darken(#C3C3C3, 30);
+
+  & h5 {
+    font-size: 2rem;
+    color: darken(#C3C3C3, 30);
     margin: 0;
   }
 
-  
-  & ul{
+  & h6 {
+    font-size: 1.7rem;
+    color: darken(#C3C3C3, 30);
+    margin: 0;
+  }
+
+  & ul {
     display: flex;
     align-items: flex-end;
     justify-content: end;
     margin-bottom: 2rem;
-    @media screen and(max-width: $desktop-breakpoint){
+
+    @media screen and (max-width: $desktop-breakpoint) {
       display: flex;
       align-items: flex-end;
       justify-content: center;
     }
   }
-  & li{
+
+  & li {
     list-style: none;
     padding-right: 40px;
-    color : #7B7B7B;
-  } 
-  @media screen and(max-width: $desktop-breakpoint){
+    color: #7B7B7B;
+  }
+
+  @media screen and (max-width: $desktop-breakpoint) {
     display: flex;
     flex-direction: column;
     margin: 0;
     justify-content: flex-end;
     align-items: center;
     text-align: center;
-    h5{
-      font-size : 3rem;
 
-      color : #C3C3C3;
-      margin: 0;
-    }
-    h6{
-      font-size : 2rem;
-      color : #C3C3C3;
+    h5 {
+      font-size: 3rem;
+      color: #C3C3C3;
       margin: 0;
     }
 
+    h6 {
+      font-size: 2rem;
+      color: #C3C3C3;
+      margin: 0;
+    }
   }
 }
 
-.list-card__fab{
-  position : absolute;
-	right : 5px;
-  bottom : -15px;
-  @media screen and(max-width:$desktop-breakpoint){
-    right : 33vw;
-    bottom : -5px;
+.list-card__fab {
+  position: absolute;
+  right: 5px;
+  bottom: -15px;
+
+  @media screen and (max-width: $desktop-breakpoint) {
+    right: 33vw;
+    bottom: -5px;
   }
-	box-sizing: border-box;
-	padding-top: 18px;
-	background-color : transparent;
-	width : 70px;
-	height : 70px;
-	color : $san-juan;
-	text-align : center;
-  border-radius : 50%;
-	// -webkit-box-shadow: 10px 10px 50px 0px rgba(0,0,0,0.75);
-	// -moz-box-shadow: 10px 10px 50px 0px rgba(0,0,0,0.75);
-	// box-shadow: 10px 10px 50px 0px rgba(0,0,0,0.75);
+
+  box-sizing: border-box;
+  padding-top: 18px;
+  background-color: transparent;
+  width: 70px;
+  height: 70px;
+  color: $san-juan;
+  text-align: center;
+  border-radius: 50%;
 }

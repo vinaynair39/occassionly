@@ -1,7 +1,7 @@
 .my-blogs{
     display: flex;
     justify-content: space-around;
-    @media screen and(max-width: $desktop-breakpoint){
+    @media screen and (max-width: $desktop-breakpoint){
         margin: 2rem;
     }
 }
@@ -16,7 +16,7 @@
 
 .my-blogs__user{
     margin-top: 6rem;
-    @media screen and(max-width: $desktop-breakpoint){
+    @media screen and (max-width: $desktop-breakpoint){
         display: none;
     }
 }

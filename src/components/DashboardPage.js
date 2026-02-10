@@ -1,27 +1,18 @@
 import React from 'react';
 import EventList from './EventList';
 import EventFilters from './EventFilters';
-import {Link} from 'react-router-dom';
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";   
-// import FamousCard from './FamousCard';
+
 const DashboardPage = () => (
-
-    <div>
-        <EventFilters/>
-        <div className="card">
-        <div className="blog-card">
-            <EventList/>
-        </div>
-        <div className="famous-card">
-            {/* <FamousCard/> */}
-        </div>   
-        {true && <Link to="/add" className="button-floating"><button><FontAwesomeIcon icon={faPlus}/></button></Link> }
+  <main className="content-container" aria-labelledby="campusflow-title">
+    <h1 id="campusflow-title">CampusFlow Events</h1>
+    <p className="subtitle">Discover what is happening around Florida Tech and plan your week.</p>
+    <EventFilters />
+    <div className="card">
+      <div className="blog-card">
+        <EventList />
+      </div>
     </div>
-    
-
-    </div>
-    
-)
+  </main>
+);
 
 export default DashboardPage;

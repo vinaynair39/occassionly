@@ -1,110 +1,136 @@
-import React, { useState, useEffect } from 'react';
-import moment from 'moment';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import Link from 'react-router-dom/Link'
-import { setLikeEvent, setUnLikeEvent, } from '../actions/events';
-import { setCheckLikeEvent } from '../actions/user';
-import { startRegisterEvent, startUnRegisterEvent} from '../actions/events';
-// import Comments from './Comments'
-import { faHeart, faCalendarAlt, faClock, faEdit } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-export const EventCard = (props) => {
-    const [likeCount, setLikeCount] = useState(props.event.likeCount);
-    const [checkLike, setCheckLike] = useState(props.checkLike);
-    const [checkRegister, setRegister] = useState(props.event.members.hasOwnProperty(props.userHandle));
+import { Link } from 'react-router-dom';
+import {
+  faCalendarAlt,
+  faClock,
+  faMapMarkerAlt,
+  faExternalLinkAlt,
+  faDownload
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { buildICSFile, buildGoogleCalendarUrl } from '../utils/calendar';
+import FocusManager from '../utils/FocusManager';
 
-    const id = props.match.params.id;
+const formatDateTime = (value) =>
+  new Date(value).toLocaleString([], {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit'
+  });
 
-    useEffect(() => {
-        props.checkLikeEvent(id).then(data => {
-            setCheckLike(data)
-        });
+const focusManager = new FocusManager();
 
-    }, [])
+export const EventCard = ({ event }) => {
+  // Hook must always be called; we guard inside it
+  useEffect(() => {
+    if (!event) return;
+    focusManager.trap('#event-title');
+    return () => focusManager.restore();
+  }, [event]);
 
-    useEffect(() => {
-        setRegister(props.event.members.hasOwnProperty(props.userHandle));
-    }, [checkRegister])
-
-    const onClickLike = () => {
-        props.likeEvent(id).then(() => {
-            setLikeCount(likeCount + 1);
-            setCheckLike(true)
-        });
-    };
-
-    const onClickUnLike = () => {
-        props.unLikeEvent(id).then(() => {
-            setLikeCount(likeCount - 1);
-            setCheckLike(false)
-        });
-    };
-
-    const startRegisterEvent = () => {
-        props.registerEvent(id);
-    }
-    const startUnRegisterEvent = () => {
-        props.unRegisterEvent(id);
-    }
-
+  if (!event) {
     return (
-        <div className="content-container event-card">
-            {props.event.userHandle === props.userHandle && <Link to={`../edit/${props.event.id}`}>
-                <button className="button button-edit"><FontAwesomeIcon icon={faEdit} />Edit</button>
-            </Link>
-            }
-            <h2 className="event-card__title">{props.event.eventName}</h2>
-            <div className="event-card__by">
-                <div className="event-card__by-name" >
-                    <img src={props.event.userImageUrl} alt="" /> <Link to={`../user/${props.event.userHandle}`}>
-                        <p> {props.event.userHandle}</p>
-                        <p>{moment(props.event.createdAt).format("MMM do")}</p>
-                    </Link>
-                </div>
-                <div className="event-card__by-like" >
-                    {checkLike ? (<div className="event-card__button"><button title='unlike?' className="btn-secondary" onClick={onClickUnLike}><FontAwesomeIcon icon={faHeart} /> {likeCount}</button></div>) : (
-                        <button title='like?' className="btn-primary" onClick={onClickLike}><FontAwesomeIcon icon={faHeart} /> {likeCount}</button>)}
-                </div>
-            </div>
-            <div className="event-card__image">
-                <img src={props.event.imageUrl} alt="" />
-            </div>
-            <div className="event-card__description">
-                <p>{props.event.description}</p>
-            </div>
-            <div className="event-card__others">
-                <div>
-                    <p>venue: {props.event.location}</p>
-                    <p>fee: {props.event.fee}</p>
-                </div>
-                <div>
-                    <p><FontAwesomeIcon icon={faCalendarAlt} />{" " + props.event.startDate + (props.event.endDate !== props.event.startDate ? " - " + props.event.endDate : "")}</p>
-                    <p><FontAwesomeIcon icon={faClock}/>{" " + props.event.startTime + " - " + props.event.endTime}</p>    
-                </div>
-            </div>
-            <div className="event-card__register">
-            {!checkRegister && <button className="btn-secondary button-register" onClick={startRegisterEvent}>Register</button>}
-            {props.userHandle !== props.event.userHandle && <button className="btn-secondary button-join">join group chat</button>}
-            {}
-            {checkRegister&& <button className="btn-secondary button-register" onClick={startUnRegisterEvent}>Unregister</button>}
-            </div>
+      <div className="content-container event-card">
+        <h2>Event not found</h2>
+        <Link to="/">Back to events</Link>
+      </div>
+    );
+  }
+
+  const icsContent = buildICSFile(event);
+  const googleCalendarUrl = buildGoogleCalendarUrl(event);
+
+  const downloadIcs = () => {
+    const element = document.createElement('a');
+    const file = new Blob([icsContent], { type: 'text/calendar' });
+    element.href = URL.createObjectURL(file);
+    element.download = `${event.title}.ics`;
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  };
+
+  return (
+    <div className="content-container event-card">
+      <Link to="/" className="back-link">← Back to all events</Link>
+      <h2 className="event-card__title" id="event-title" tabIndex="-1">
+        {event.title}
+      </h2>
+      <div className="event-card__description">
+        <p>{event.longDescription || event.shortDescription}</p>
+      </div>
+      <div className="event-card__others">
+        <div>
+          <p>
+            <FontAwesomeIcon icon={faMapMarkerAlt} /> {event.location}
+          </p>
+          <p>Organizer: {event.organizer}</p>
+          <p>Category: {event.category}</p>
+          <p>Cost: {event.costType}</p>
         </div>
-    )
-}
-
-const mapDispatchToProps = (dispatch) => ({
-    likeEvent: (eventId) => dispatch(setLikeEvent(eventId)),
-    unLikeEvent: (eventId) => dispatch(setUnLikeEvent(eventId)),
-    checkLikeEvent: (eventId) => dispatch(setCheckLikeEvent(eventId)),
-    registerEvent: (eventId) => dispatch(startRegisterEvent(eventId)),
-    unRegisterEvent: (eventId) => dispatch(startUnRegisterEvent(eventId))
-
-});
+        <div>
+          <p>
+            <FontAwesomeIcon icon={faCalendarAlt} />{' '}
+            {formatDateTime(event.startDateTime)}
+          </p>
+          <p>
+            <FontAwesomeIcon icon={faClock} /> Ends{' '}
+            {formatDateTime(event.endDateTime)}
+          </p>
+        </div>
+      </div>
+      <div className="event-card__register">
+        <button className="btn-primary" onClick={downloadIcs}>
+          <FontAwesomeIcon icon={faDownload} /> Download .ics
+        </button>
+        <a
+          className="btn-secondary"
+          href={googleCalendarUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Add to Google Calendar <FontAwesomeIcon icon={faExternalLinkAlt} />
+        </a>
+        <a
+          className="btn-secondary"
+          href={event.sourceUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View source
+        </a>
+      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Event',
+            name: event.title,
+            startDate: event.startDateTime,
+            endDate: event.endDateTime,
+            eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+            location: {
+              '@type': 'Place',
+              name: event.location
+            },
+            organizer: {
+              '@type': 'Organization',
+              name: event.organizer
+            },
+            description: event.longDescription
+          })
+        }}
+      />
+    </div>
+  );
+};
 
 const mapStateToProps = (state, props) => ({
-    event: state.events.find(event => event.id === props.match.params.id),
-    userHandle: state.user.userHandle,
-    checkLike: state.user.checkLike
+  event: state.events.find((event) => event.id === props.match.params.id)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventCard);
+export default connect(mapStateToProps)(EventCard);

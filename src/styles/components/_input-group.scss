@@ -20,12 +20,25 @@
     padding: 1rem;
     background: #f9f9f9;
   }
+
+  select {
+    border-radius: 0.8rem;
+    border: 1px solid $dark-grey;
+    padding: 0.8rem 1rem;
+    background: #f9f9f9;
+  }
 }
 
 .input-group__item {
   margin-bottom: $m-size;
   @media (min-width: $desktop-breakpoint) {
     margin: 0 $l-size 0 0;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: $off-white;
   }
 
   

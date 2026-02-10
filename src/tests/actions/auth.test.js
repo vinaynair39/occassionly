@@ -1,11 +1,9 @@
 import { login, logout } from '../../actions/auth';
 
 test('should generate login action object', () => {
-  const uid = 'abc123';
-  const action = login(uid);
+  const action = login();
   expect(action).toEqual({
-    type: 'LOGIN',
-    uid
+    type: 'LOGIN'
   });
 });
 

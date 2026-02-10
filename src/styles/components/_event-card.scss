@@ -26,8 +26,9 @@
 .event-card__register{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    gap: 1rem;
 }
 .event-card__others{
     display: flex;
@@ -75,8 +76,18 @@
 
 .event-card__description{
     & p{
-        font-family: 'Quicksand', sans-serif; 
+        font-family: 'Quicksand', sans-serif;
         margin-top: 2rem;
         color: $white;
     }
+}
+
+.back-link {
+    color: $blush;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.btn-primary, .btn-secondary {
+    margin-right: 1rem;
 }

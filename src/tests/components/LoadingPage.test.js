@@ -1,8 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import ReactDOM from 'react-dom';
 import LoadingPage from '../../components/LoadingPage';
 
-test('should correctly render LoadingPage', () => {
-  const wrapper = shallow(<LoadingPage />);
-  expect(wrapper).toMatchSnapshot();
+test('renders loading indicator', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<LoadingPage />, div);
+  const img = div.querySelector('img');
+  expect(img).not.toBeNull();
 });
